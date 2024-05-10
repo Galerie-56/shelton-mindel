@@ -7,7 +7,9 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-export const loader: LoaderFunction = async ({ params }: LoaderFunctionArgs) => {
+export const loader: LoaderFunction = async ({
+  params,
+}: LoaderFunctionArgs) => {
   let slug = params["*"] ?? "home";
 
   let sbParams = {
@@ -15,12 +17,10 @@ export const loader: LoaderFunction = async ({ params }: LoaderFunctionArgs) => 
   };
 
   const sbApi = getStoryblokApi();
-  let { data } = await sbApi
-    .get(`cdn/stories/${slug}`, sbParams)
-    .catch((e) => {
-      console.log("e", e);
-      return { data: null };
-    });
+  let { data } = await sbApi.get(`cdn/stories/${slug}`, sbParams).catch((e) => {
+    console.log("e", e);
+    return { data: null };
+  });
 
   if (!data) {
     throw new Response("Not Found", { status: 404 });
@@ -28,8 +28,6 @@ export const loader: LoaderFunction = async ({ params }: LoaderFunctionArgs) => 
 
   return json({ story: data?.story });
 };
-
-
 
 export default function Page() {
   let { story } = useLoaderData();

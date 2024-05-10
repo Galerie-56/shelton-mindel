@@ -26,7 +26,23 @@ storyblokInit({
   components,
 });
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+export const links: LinksFunction = () => [
+  {
+    rel: "preload",
+    href: "/assets/fonts/NeueHaasUnica-Regular.woff2",
+    as: "font",
+    type: "font/woff2",
+    crossorigin: "anonymous",
+  },
+  {
+    rel: "preload",
+    href: "/assets/fonts/NeueHaasUnica-Regular.woff",
+    as: "font",
+    type: "font/woff",
+    crossorigin: "anonymous",
+  },
+  { rel: "stylesheet", href: styles },
+];
 
 export const loader = async () => {
   return json({
