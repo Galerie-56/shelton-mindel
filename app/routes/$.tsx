@@ -12,15 +12,15 @@ export const loader: LoaderFunction = async ({
 }: LoaderFunctionArgs) => {
   let slug = params["*"] ?? "home";
 
-  let sbParams = {
-    version: "draft",
-  };
-
   const sbApi = getStoryblokApi();
-  let { data } = await sbApi.get(`cdn/stories/${slug}`, sbParams).catch((e) => {
-    console.log("e", e);
-    return { data: null };
-  });
+  let { data }: { data: any } = await sbApi
+    .get(`cdn/stories/${slug}`, {
+      version: "draft",
+    })
+    .catch((e) => {
+      console.log("e", e);
+      return { data: null };
+    });
 
   if (!data) {
     throw new Response("Not Found", { status: 404 });
@@ -28,14 +28,13 @@ export const loader: LoaderFunction = async ({
 
   return json({ story: data?.story });
 };
-
 export default function Page() {
-  let { story } = useLoaderData();
-  story = useStoryblokState(story);
+  const data = useLoaderData<typeof loader>();
 
+  const story = useStoryblokState(data.story);
   return (
     <>
-      <StoryblokComponent blok={story.content} />
+      <StoryblokComponent blok={story?.content} />
     </>
   );
 }
