@@ -60,7 +60,7 @@ export const loader = async () => {
     header_nav,
     address,
     footer_text,
-    footer,
+    phone,
     mail,
     facebook,
     instagram,
@@ -75,7 +75,7 @@ export const loader = async () => {
     headerNav: header_nav,
     address,
     footerText: footer_text,
-    footer,
+    phone,
     mail,
     facebook,
     instagram,
@@ -87,7 +87,7 @@ export const loader = async () => {
 export function Layout({ children }: { children: React.ReactNode }) {
   const { env } = useLoaderData<typeof loader>();
   return (
-    <html lang="en">
+    <html lang="en" className="bg-white text-primary ">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
