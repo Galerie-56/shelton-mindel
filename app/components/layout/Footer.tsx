@@ -1,3 +1,7 @@
 export const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <footer>
+      <div className="max-w-site mx-auto">Footer</div>
+    </footer>
+  );
 };

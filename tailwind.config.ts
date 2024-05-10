@@ -10,6 +10,9 @@ export default {
       colors: {
         primary: "#666",
       },
+      maxWidth: {
+        site: "1280px",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],

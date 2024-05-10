@@ -9,7 +9,7 @@ export const GlobalLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      {children}
+      <main className="max-w-site mx-auto">{children}</main>
       <Footer />
     </>
   );
