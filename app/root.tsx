@@ -10,6 +10,7 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import styles from "./tailwind.css?url";
+import { GlobalLayout } from "./components/layout";
 
 const isServer = typeof window === "undefined";
 
@@ -77,5 +78,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <GlobalLayout>
+      <Outlet />
+    </GlobalLayout>
+  );
 }
