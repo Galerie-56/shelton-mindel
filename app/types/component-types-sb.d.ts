@@ -107,6 +107,7 @@ export interface ConfigStoryblok {
   twitter?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   instagram?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   pinterest?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  footer_text?: string;
   _uid: string;
   component: "config";
   [k: string]: any;
@@ -141,10 +142,9 @@ export interface ImageFieldsStoryblok {
 }
 
 export interface NavItemStoryblok {
-  sub_menu?: NavItemStoryblok[];
+  sub_menu?: SubNavItemStoryblok[];
   label?: string;
-  link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  is_submenu?: boolean;
+  link?: MultilinkStoryblok;
   _uid: string;
   component: "nav-item";
   [k: string]: any;
@@ -176,6 +176,7 @@ export interface PageStoryblok {
     | SeoStoryblok
     | SlideshowStoryblok
     | SpaceStoryblok
+    | SubNavItemStoryblok
   )[];
   _uid: string;
   component: "page";
@@ -314,5 +315,13 @@ export interface SpaceStoryblok {
   images?: ImageFieldsStoryblok[];
   _uid: string;
   component: "space";
+  [k: string]: any;
+}
+
+export interface SubNavItemStoryblok {
+  label?: string;
+  link?: MultilinkStoryblok;
+  _uid: string;
+  component: "sub-nav-item";
   [k: string]: any;
 }
