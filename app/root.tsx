@@ -8,9 +8,10 @@ import {
   json,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-import { storyblokInit, apiPlugin } from "@storyblok/react";
+import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
 import styles from "./tailwind.css?url";
 import { GlobalLayout } from "./components/layout";
+import { NavItem } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
 
@@ -19,7 +20,9 @@ const accessToken = isServer
   : //@ts-ignore
     window.env.STORYBLOK_PREVIEW_TOKEN;
 
-const components = {};
+const components = {
+  "nav-item": NavItem,
+};
 
 storyblokInit({
   accessToken,
@@ -46,10 +49,38 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async () => {
+  const sbApi = getStoryblokApi();
+  const { data: config } = await sbApi.get(`cdn/stories/config`, {
+    version: "draft",
+    resolve_links: "url",
+  });
+
+  const {
+    logo,
+    header_nav,
+    address,
+    footer_text,
+    footer,
+    mail,
+    facebook,
+    instagram,
+    twitter,
+    pinterest,
+  } = config?.story?.content || {};
   return json({
     env: {
       STORYBLOK_PREVIEW_TOKEN: process.env.STORYBLOK_PREVIEW_TOKEN,
     },
+    logo,
+    headerNav: header_nav,
+    address,
+    footerText: footer_text,
+    footer,
+    mail,
+    facebook,
+    instagram,
+    twitter,
+    pinterest,
   });
 };
 

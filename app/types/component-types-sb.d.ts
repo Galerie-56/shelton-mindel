@@ -142,9 +142,10 @@ export interface ImageFieldsStoryblok {
 }
 
 export interface NavItemStoryblok {
-  sub_menu?: SubNavItemStoryblok[];
   label?: string;
   link?: MultilinkStoryblok;
+  is_submenu?: boolean;
+  sub_menu?: NavItemStoryblok[];
   _uid: string;
   component: "nav-item";
   [k: string]: any;
@@ -176,7 +177,6 @@ export interface PageStoryblok {
     | SeoStoryblok
     | SlideshowStoryblok
     | SpaceStoryblok
-    | SubNavItemStoryblok
   )[];
   _uid: string;
   component: "page";
@@ -315,13 +315,5 @@ export interface SpaceStoryblok {
   images?: ImageFieldsStoryblok[];
   _uid: string;
   component: "space";
-  [k: string]: any;
-}
-
-export interface SubNavItemStoryblok {
-  label?: string;
-  link?: MultilinkStoryblok;
-  _uid: string;
-  component: "sub-nav-item";
   [k: string]: any;
 }
