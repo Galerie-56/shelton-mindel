@@ -710,7 +710,7 @@
       "name": "project",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.195Z",
-      "updated_at": "2023-10-25T11:39:41.538Z",
+      "updated_at": "2024-05-11T15:41:57.437Z",
       "id": 4778317,
       "schema": {
         "headline": {
@@ -795,6 +795,12 @@
           "component_whitelist": [
             "seo"
           ]
+        },
+        "pictures": {
+          "type": "multiasset",
+          "filetypes": [
+            "images"
+          ]
         }
       },
       "image": null,
@@ -816,12 +822,15 @@
       "name": "publication",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.215Z",
-      "updated_at": "2023-10-25T11:38:59.088Z",
+      "updated_at": "2024-05-11T15:52:36.374Z",
       "id": 4778318,
       "schema": {
-        "date": {
-          "type": "datetime",
-          "pos": 0
+        "thumbnail": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 327705
         },
         "title": {
           "type": "text",
@@ -832,18 +841,12 @@
           "pos": 2
         },
         "url": {
-          "type": "text",
-          "pos": 3
+          "type": "multilink",
+          "pos": 3,
+          "display_name": "link"
         },
-        "thumbnail": {
-          "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "asset_folder_id": 327705
-        },
-        "client_name": {
-          "type": "text"
+        "year": {
+          "type": "number"
         }
       },
       "image": null,

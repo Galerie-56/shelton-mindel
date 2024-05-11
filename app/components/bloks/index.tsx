@@ -7,3 +7,5 @@ export * from "./Awards";
 export * from "./Award";
 export * from "./ArchitectEyes";
 export * from "./ArchitectEye";
+export * from "./Publications";
+export * from "./Publication";

@@ -21,6 +21,8 @@ import {
   Award,
   ArchitectEyes,
   ArchitectEye,
+  Publications,
+  Publication,
 } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
@@ -40,6 +42,8 @@ const components = {
   award: Award,
   "architect-eyes": ArchitectEyes,
   "architect-eye": ArchitectEye,
+  publications: Publications,
+  publication: Publication,
 };
 
 storyblokInit({

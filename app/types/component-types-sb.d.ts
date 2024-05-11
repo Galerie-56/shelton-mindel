@@ -261,18 +261,18 @@ export interface ProjectStoryblok {
   photo_credits?: string;
   architect?: string;
   seo?: SeoStoryblok[];
+  pictures?: MultiassetStoryblok;
   _uid: string;
   component: "project";
   [k: string]: any;
 }
 
 export interface PublicationStoryblok {
-  date?: string;
+  thumbnail?: AssetStoryblok;
   title?: string;
   author?: string;
-  url?: string;
-  thumbnail?: AssetStoryblok;
-  client_name?: string;
+  url?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  year?: string;
   _uid: string;
   component: "publication";
   [k: string]: any;
