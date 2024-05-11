@@ -11,7 +11,7 @@ import type { LinksFunction } from "@remix-run/node";
 import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
 import styles from "./tailwind.css?url";
 import { GlobalLayout } from "./components/layout";
-import { NavItem, Content, Page } from "./components/bloks";
+import { NavItem, Content, Page, Profile, Profiles } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
 
@@ -24,6 +24,8 @@ const components = {
   "nav-item": NavItem,
   content: Content,
   page: Page,
+  profile: Profile,
+  profiles: Profiles,
 };
 
 storyblokInit({
@@ -87,7 +89,12 @@ export const loader = async () => {
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { env } = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
+  if (!data) {
+    // Handle the case where data is not available, e.g., render an error message or a loading spinner
+    return <div>Loading or error...</div>;
+  }
+  const { env } = data;
   return (
     <html lang="en" className="bg-white text-primary ">
       <head>
