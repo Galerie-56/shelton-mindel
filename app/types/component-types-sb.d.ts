@@ -1,12 +1,5 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
-export interface ArchiectEyesStoryblok {
-  items?: ArchitectEyeStoryblok[];
-  _uid: string;
-  component: "archiect-eyes";
-  [k: string]: any;
-}
-
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -54,8 +47,16 @@ export interface ArchitectEyeStoryblok {
   link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   image?: AssetStoryblok;
   description?: string;
+  date?: string;
   _uid: string;
   component: "architect-eye";
+  [k: string]: any;
+}
+
+export interface ArchitectEyesStoryblok {
+  items?: ArchitectEyeStoryblok[];
+  _uid: string;
+  component: "architect-eyes";
   [k: string]: any;
 }
 
@@ -151,8 +152,8 @@ export interface NavItemStoryblok {
 export interface PageStoryblok {
   headline?: string;
   body?: (
-    | ArchiectEyesStoryblok
     | ArchitectEyeStoryblok
+    | ArchitectEyesStoryblok
     | AwardStoryblok
     | AwardsStoryblok
     | CareerStoryblok

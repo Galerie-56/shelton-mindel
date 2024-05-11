@@ -5,3 +5,5 @@ export * from "./Profile";
 export * from "./Profiles";
 export * from "./Awards";
 export * from "./Award";
+export * from "./ArchitectEyes";
+export * from "./ArchitectEye";

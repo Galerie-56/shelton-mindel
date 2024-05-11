@@ -19,6 +19,8 @@ import {
   Profiles,
   Awards,
   Award,
+  ArchitectEyes,
+  ArchitectEye,
 } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
@@ -36,6 +38,8 @@ const components = {
   profiles: Profiles,
   awards: Awards,
   award: Award,
+  "architect-eyes": ArchitectEyes,
+  "architect-eye": ArchitectEye,
 };
 
 storyblokInit({

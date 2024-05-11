@@ -1,10 +1,52 @@
 {
   "components": [
     {
-      "name": "archiect-eyes",
+      "name": "architect-eye",
+      "display_name": null,
+      "created_at": "2023-10-25T12:12:31.111Z",
+      "updated_at": "2024-05-11T15:24:14.280Z",
+      "id": 4783071,
+      "schema": {
+        "title": {
+          "type": "text"
+        },
+        "link": {
+          "type": "multilink"
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 327722
+        },
+        "description": {
+          "type": "textarea"
+        },
+        "date": {
+          "type": "datetime"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "architect-eye",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "architect-eyes",
       "display_name": null,
       "created_at": "2023-10-25T12:14:46.764Z",
-      "updated_at": "2023-10-25T12:25:10.080Z",
+      "updated_at": "2024-05-11T15:33:06.705Z",
       "id": 4783137,
       "schema": {
         "items": {
@@ -23,7 +65,7 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "archiect-eyes",
+      "real_name": "architect-eyes",
       "component_group_uuid": "3f99a628-3899-44a4-a276-a76039fac41b",
       "color": null,
       "icon": null,
@@ -31,45 +73,6 @@
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
       "component_group_name": "page-blocks"
-    },
-    {
-      "name": "architect-eye",
-      "display_name": null,
-      "created_at": "2023-10-25T12:12:31.111Z",
-      "updated_at": "2023-10-25T12:14:12.543Z",
-      "id": 4783071,
-      "schema": {
-        "title": {
-          "type": "text"
-        },
-        "link": {
-          "type": "multilink"
-        },
-        "image": {
-          "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "asset_folder_id": 327722
-        },
-        "description": {
-          "type": "text"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "architect-eye",
-      "component_group_uuid": null,
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null
     },
     {
       "name": "award",
