@@ -1,12 +1,11 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
-import { ProfileStoryblok, ProfilesStoryblok } from "~/types";
+import { AwardStoryblok, AwardsStoryblok } from "~/types";
 
-export const Profiles = ({ blok }: ProfilesStoryblok) => {
-  let { items, title, _uid } = blok;
+export const Awards = ({ blok }: AwardsStoryblok) => {
+  let { items, _uid } = blok;
   return (
     <div {...storyblokEditable(blok)} key={_uid}>
-      <h2>{title}</h2>
-      {items.map((nestedBlok: ProfileStoryblok) => (
+      {items.map((nestedBlok: AwardStoryblok) => (
         <StoryblokComponent key={nestedBlok._uid} blok={nestedBlok} />
       ))}
     </div>

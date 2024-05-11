@@ -11,7 +11,15 @@ import type { LinksFunction } from "@remix-run/node";
 import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
 import styles from "./tailwind.css?url";
 import { GlobalLayout } from "./components/layout";
-import { NavItem, Content, Page, Profile, Profiles } from "./components/bloks";
+import {
+  NavItem,
+  Content,
+  Page,
+  Profile,
+  Profiles,
+  Awards,
+  Award,
+} from "./components/bloks";
 
 const isServer = typeof window === "undefined";
 
@@ -26,6 +34,8 @@ const components = {
   page: Page,
   profile: Profile,
   profiles: Profiles,
+  awards: Awards,
+  award: Award,
 };
 
 storyblokInit({

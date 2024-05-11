@@ -62,12 +62,9 @@ export interface ArchitectEyeStoryblok {
 export interface AwardStoryblok {
   title?: string;
   year?: string;
-  description?: string;
-  project_name?: string;
   link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  external_link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   thumbnail?: AssetStoryblok;
-  client_name?: string;
+  description?: string;
   _uid: string;
   component: "award";
   [k: string]: any;

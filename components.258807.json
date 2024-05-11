@@ -75,7 +75,7 @@
       "name": "award",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.253Z",
-      "updated_at": "2023-10-25T11:39:20.742Z",
+      "updated_at": "2024-05-11T14:59:07.530Z",
       "id": 4778319,
       "schema": {
         "title": {
@@ -87,29 +87,22 @@
           "required": false,
           "pos": 1
         },
-        "description": {
-          "type": "textarea",
-          "required": false,
-          "pos": 2
-        },
-        "project_name": {
-          "type": "text"
-        },
         "link": {
-          "type": "multilink"
-        },
-        "external_link": {
-          "type": "multilink"
+          "type": "multilink",
+          "pos": 2
         },
         "thumbnail": {
           "type": "asset",
           "filetypes": [
             "images"
           ],
-          "asset_folder_id": 327706
+          "asset_folder_id": 327706,
+          "pos": 3
         },
-        "client_name": {
-          "type": "text"
+        "description": {
+          "type": "textarea",
+          "required": false,
+          "pos": 4
         }
       },
       "image": null,
@@ -972,11 +965,14 @@
       "name": "slideshow",
       "display_name": null,
       "created_at": "2023-10-25T12:21:52.019Z",
-      "updated_at": "2023-10-25T12:23:46.404Z",
+      "updated_at": "2024-05-10T12:41:08.144Z",
       "id": 4783207,
       "schema": {
         "images": {
-          "type": "multiasset"
+          "type": "multiasset",
+          "filetypes": [
+            "images"
+          ]
         }
       },
       "image": null,
