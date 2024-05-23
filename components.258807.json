@@ -1,6 +1,29 @@
 {
   "components": [
     {
+      "name": "all-products",
+      "display_name": null,
+      "created_at": "2024-05-11T16:28:11.908Z",
+      "updated_at": "2024-05-11T16:28:11.908Z",
+      "id": 5781477,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "all-products",
+      "component_group_uuid": "3f99a628-3899-44a4-a276-a76039fac41b",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "page-blocks"
+    },
+    {
       "name": "architect-eye",
       "display_name": null,
       "created_at": "2023-10-25T12:12:31.111Z",
@@ -187,6 +210,32 @@
       "content_type_asset_preview": null
     },
     {
+      "name": "Category",
+      "display_name": null,
+      "created_at": "2024-05-23T14:10:45.059Z",
+      "updated_at": "2024-05-23T14:11:00.783Z",
+      "id": 5834127,
+      "schema": {
+        "Headline": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Category",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
       "name": "config",
       "display_name": null,
       "created_at": "2023-10-25T12:29:56.059Z",
@@ -342,7 +391,7 @@
       "name": "image-fields",
       "display_name": null,
       "created_at": "2023-10-24T16:18:26.829Z",
-      "updated_at": "2023-10-24T16:27:14.704Z",
+      "updated_at": "2024-05-11T16:17:29.104Z",
       "id": 4778323,
       "schema": {
         "image": {
@@ -353,12 +402,6 @@
         },
         "link": {
           "type": "multilink"
-        },
-        "name": {
-          "type": "text"
-        },
-        "date": {
-          "type": "datetime"
         }
       },
       "image": null,
@@ -543,7 +586,7 @@
       "name": "product",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.175Z",
-      "updated_at": "2023-10-24T16:27:04.219Z",
+      "updated_at": "2024-05-11T16:21:03.839Z",
       "id": 4778316,
       "schema": {
         "headline": {
@@ -582,6 +625,14 @@
           "restrict_components": true,
           "component_whitelist": [
             "seo"
+          ]
+        },
+        "brochures": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image-fields"
           ]
         }
       },
@@ -710,7 +761,7 @@
       "name": "project",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.195Z",
-      "updated_at": "2024-05-11T15:41:57.437Z",
+      "updated_at": "2024-05-23T14:21:36.345Z",
       "id": 4778317,
       "schema": {
         "headline": {
@@ -741,20 +792,16 @@
           "display_name": "info",
           "keys": [
             "project_code",
-            "client_name",
             "awards",
             "press",
-            "photo_credits",
-            "architect"
+            "architect",
+            "photographer"
           ],
           "pos": 0,
           "type": "tab"
         },
         "project_code": {
           "type": "number"
-        },
-        "client_name": {
-          "type": "text"
         },
         "awards": {
           "type": "bloks",
@@ -771,9 +818,6 @@
           "component_whitelist": [
             "publication"
           ]
-        },
-        "photo_credits": {
-          "type": "text"
         },
         "architect": {
           "type": "text"
@@ -800,6 +844,17 @@
           "type": "multiasset",
           "filetypes": [
             "images"
+          ]
+        },
+        "photographer": {
+          "type": "text"
+        },
+        "category": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal_stories",
+          "filter_content_type": [
+            "Category"
           ]
         }
       },

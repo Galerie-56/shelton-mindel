@@ -1,7 +1,7 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import type { PageStoryblok } from "~/types";
 
-export const Page = ({ blok }: PageStoryblok) => {
+export const Page = ({ blok }: { blok: PageStoryblok }) => {
   const { body, _uid, headline } = blok;
   return (
     <div key={_uid} {...storyblokEditable(blok)}>

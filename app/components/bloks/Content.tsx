@@ -1,6 +1,5 @@
-import { storyblokEditable } from "@storyblok/react";
+import { storyblokEditable, renderRichText } from "@storyblok/react";
 import type { ContentStoryblok } from "~/types";
-import { renderRichText } from "@storyblok/react";
 
 export const Content = ({ blok }: ContentStoryblok) => {
   const { _uid, text, image } = blok;

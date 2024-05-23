@@ -1,5 +1,11 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface AllProductsStoryblok {
+  _uid: string;
+  component: "all-products";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -95,6 +101,13 @@ export interface CareerStoryblok {
   [k: string]: any;
 }
 
+export interface CategoryStoryblok {
+  Headline?: string;
+  _uid: string;
+  component: "Category";
+  [k: string]: any;
+}
+
 export interface ConfigStoryblok {
   logo?: AssetStoryblok;
   header_nav?: NavItemStoryblok[];
@@ -132,8 +145,6 @@ export interface ContentStoryblok {
 export interface ImageFieldsStoryblok {
   image?: AssetStoryblok;
   link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  name?: string;
-  date?: string;
   _uid: string;
   component: "image-fields";
   [k: string]: any;
@@ -152,11 +163,13 @@ export interface NavItemStoryblok {
 export interface PageStoryblok {
   headline?: string;
   body?: (
+    | AllProductsStoryblok
     | ArchitectEyeStoryblok
     | ArchitectEyesStoryblok
     | AwardStoryblok
     | AwardsStoryblok
     | CareerStoryblok
+    | CategoryStoryblok
     | ConfigStoryblok
     | ContactStoryblok
     | ContentStoryblok
@@ -209,6 +222,7 @@ export interface ProductStoryblok {
   image?: AssetStoryblok;
   product_series?: ProductSerieStoryblok[];
   seo?: SeoStoryblok[];
+  brochures?: ImageFieldsStoryblok[];
   _uid: string;
   component: "product";
   [k: string]: any;
@@ -255,13 +269,13 @@ export interface ProjectStoryblok {
   solution?: RichtextStoryblok;
   slideshow?: MultiassetStoryblok;
   project_code?: string;
-  client_name?: string;
   awards?: AwardStoryblok[];
   press?: PublicationStoryblok[];
-  photo_credits?: string;
   architect?: string;
   seo?: SeoStoryblok[];
   pictures?: MultiassetStoryblok;
+  photographer?: string;
+  category?: StoryblokStory<CategoryStoryblok> | string;
   _uid: string;
   component: "project";
   [k: string]: any;
