@@ -6,6 +6,12 @@ export interface AllProductsStoryblok {
   [k: string]: any;
 }
 
+export interface AllProjectsStoryblok {
+  _uid: string;
+  component: "all-projects";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -119,6 +125,7 @@ export interface ConfigStoryblok {
   instagram?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   pinterest?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   footer_text?: string;
+  posts_per_page?: string;
   _uid: string;
   component: "config";
   [k: string]: any;
@@ -164,6 +171,7 @@ export interface PageStoryblok {
   headline?: string;
   body?: (
     | AllProductsStoryblok
+    | AllProjectsStoryblok
     | ArchitectEyeStoryblok
     | ArchitectEyesStoryblok
     | AwardStoryblok

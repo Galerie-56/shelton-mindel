@@ -23,6 +23,7 @@ import {
   ArchitectEye,
   Publications,
   Publication,
+  AllProjects,
 } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
@@ -44,6 +45,7 @@ const components = {
   "architect-eye": ArchitectEye,
   publications: Publications,
   publication: Publication,
+  "all-projects": AllProjects,
 };
 
 storyblokInit({
@@ -88,6 +90,7 @@ export const loader = async () => {
     instagram,
     twitter,
     pinterest,
+    posts_per_page,
   } = config?.story?.content || {};
   return json({
     env: {
@@ -103,6 +106,7 @@ export const loader = async () => {
     instagram,
     twitter,
     pinterest,
+    perPage: posts_per_page,
   });
 };
 
