@@ -10,3 +10,4 @@ export * from "./ArchitectEye";
 export * from "./Publications";
 export * from "./Publication";
 export * from "./AllProjects";
+export * from "./Project";

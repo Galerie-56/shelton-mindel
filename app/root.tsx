@@ -24,6 +24,7 @@ import {
   Publications,
   Publication,
   AllProjects,
+  Project,
 } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
@@ -46,6 +47,7 @@ const components = {
   publications: Publications,
   publication: Publication,
   "all-projects": AllProjects,
+  project: Project,
 };
 
 storyblokInit({
