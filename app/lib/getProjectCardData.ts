@@ -4,7 +4,7 @@ export function getProjectCardData(p: ProjectStoryblok) {
     id: p.id,
     headline: p.content.headline,
     full_slug: p.full_slug,
-    image: p.content.slideshow[0].cached_url,
+    image: p.content.slideshow[0],
     category: p.content.category,
     project_code: p.content.project_code,
   };
