@@ -3,7 +3,7 @@ import { SlideshowStoryblok } from "~/types";
 import { SlideShow } from "../SlideShow";
 import { Link } from "@remix-run/react";
 
-const HomeSlideShow = ({ blok }: { blok: SlideshowStoryblok }) => {
+export const HomeSlideShow = ({ blok }: { blok: SlideshowStoryblok }) => {
   const { images, _uid } = blok;
   return (
     <Link to="/projects" {...storyblokEditable(blok)} key={_uid}>
@@ -12,5 +12,3 @@ const HomeSlideShow = ({ blok }: { blok: SlideshowStoryblok }) => {
     </Link>
   );
 };
-
-export default HomeSlideShow;
