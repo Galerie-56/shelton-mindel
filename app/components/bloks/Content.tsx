@@ -1,7 +1,7 @@
 import { storyblokEditable, renderRichText } from "@storyblok/react";
 import type { ContentStoryblok } from "~/types";
 
-export const Content = ({ blok }: ContentStoryblok) => {
+export const Content = ({ blok }: { blok: ContentStoryblok }) => {
   const { _uid, text, image } = blok;
   return (
     <div {...storyblokEditable(blok)} key={_uid}>

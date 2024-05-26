@@ -1,5 +1,6 @@
 import { storyblokEditable, renderRichText } from "@storyblok/react";
 import { ProjectStoryblok } from "~/types";
+import { SlideShow } from "../SlideShow";
 
 export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
   const {
@@ -16,6 +17,10 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     seo,
   } = blok;
   console.log(awards);
+
+  // const images = slideshow?.map((slide) => slide.filename);
+  // console.log("images", images);
+
   return (
     <article
       {...storyblokEditable(blok)}
@@ -84,6 +89,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
           </div>
         </div>
       </div>
+      <SlideShow images={slideshow} />
     </article>
   );
 };

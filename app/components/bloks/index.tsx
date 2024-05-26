@@ -11,3 +11,4 @@ export * from "./Publications";
 export * from "./Publication";
 export * from "./AllProjects";
 export * from "./Project";
+export * from "./HomeSlideShow";
