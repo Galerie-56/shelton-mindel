@@ -13,3 +13,4 @@ export * from "./AllProjects";
 export * from "./Project";
 export * from "./HomeSlideShow";
 export * from "./Category";
+export * from "./Product";

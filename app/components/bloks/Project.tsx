@@ -18,9 +18,6 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
   } = blok;
   console.log(awards);
 
-  // const images = slideshow?.map((slide) => slide.filename);
-  // console.log("images", images);
-
   return (
     <article
       {...storyblokEditable(blok)}
