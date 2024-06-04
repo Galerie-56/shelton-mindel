@@ -1,11 +1,7 @@
 import { LoaderFunction, LoaderFunctionArgs, json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-
-import {
-  getStoryblokApi,
-  useStoryblokState,
-  StoryblokComponent,
-} from "@storyblok/react";
+import { useParams } from "@remix-run/react";
+import { getStoryblokApi } from "@storyblok/react";
+import { useStoryblokData } from "~/lib/useStoryblokData";
 
 export const loader: LoaderFunction = async ({
   params,
@@ -18,7 +14,7 @@ export const loader: LoaderFunction = async ({
       version: "draft",
     })
     .catch((e) => {
-      console.log("e", e);
+      // console.log("e", e);
       return { data: null };
     });
 
@@ -29,12 +25,7 @@ export const loader: LoaderFunction = async ({
   return json({ story: data?.story });
 };
 export default function Page() {
-  const data = useLoaderData<typeof loader>();
-
-  const story = useStoryblokState(data.story);
-  return (
-    <>
-      <StoryblokComponent blok={story?.content} />
-    </>
-  );
+  const params = useParams();
+  const routeFile = params["*"] === undefined ? "_index" : "$";
+  return useStoryblokData(routeFile);
 }

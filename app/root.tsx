@@ -26,6 +26,7 @@ import {
   AllProjects,
   Project,
   HomeSlideShow,
+  Category,
 } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
@@ -50,6 +51,7 @@ const components = {
   "all-projects": AllProjects,
   project: Project,
   slideshow: HomeSlideShow,
+  category: Category,
 };
 
 storyblokInit({

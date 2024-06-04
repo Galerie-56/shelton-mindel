@@ -20,6 +20,7 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
   const globalData = matches[0].data;
   const { total, projects: firstsProjects } = matches[1].data as RouteData;
   const [projects, setProjects] = useState(firstsProjects);
+  console.log("projects", projects, "matches", matches);
 
   interface GlobalData {
     perPage: number;
@@ -58,7 +59,7 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
   };
   return (
     <div>
-      {projects.map((project: ProjectStoryblok) => (
+      {projects?.map((project: ProjectStoryblok) => (
         <ProjectCard key={project.id} project={project} />
       ))}
       {total && projects.length < total && (
