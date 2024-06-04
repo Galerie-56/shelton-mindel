@@ -22,13 +22,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const resolveRelations = ["project.category"];
 
   const { data } = await sbApi
-    .get(`cdn/stories/${slug}`, {
+    .get(`cdn/stories/categories/${slug}`, {
       version: "draft",
-      filter_query: {
-        component: {
-          in: "category",
-        },
-      },
     })
     .catch((e) => {
       //   console.log("e", e);
@@ -40,7 +35,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 
   const story = data?.story;
 
-  const seo = story?.content?.seo[0];
+  //   const seo = story?.content?.seo[0];
 
   const page = Number.isNaN(Number(params.pageNumber))
     ? 1
@@ -72,13 +67,12 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 
   return json(
     {
-      blok: story,
+      story,
       uuid: uuid,
       name: story.name,
       projects,
       perPage,
       total,
-      seo,
     },
     { headers }
   );
