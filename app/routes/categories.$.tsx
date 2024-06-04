@@ -63,7 +63,6 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const projects = postsByContentType?.stories.map((p: ProjectStoryblok) =>
     getProjectCardData(p)
   );
-  console.log("projects", projects);
 
   return json(
     {

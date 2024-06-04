@@ -16,7 +16,6 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     solution,
     seo,
   } = blok;
-  console.log(awards);
 
   return (
     <article

@@ -128,7 +128,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }
   const { env } = data;
   return (
-    <html lang="en" className="bg-white text-primary ">
+    <html lang="en" className="bg-white !text-primary">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

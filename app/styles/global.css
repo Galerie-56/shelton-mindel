@@ -85,4 +85,13 @@
   body {
     @apply bg-background text-foreground;
   }
+  footer h3 {
+    @apply text-[10px] uppercase mb-1;
+  }
+}
+
+@layer components {
+  .menu-item {
+    @apply uppercase tracking-wide mr-7;
+  }
 }

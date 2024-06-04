@@ -6,9 +6,9 @@ export const Header = () => {
   const { logo, headerNav } = useLoaderData<typeof loader>();
   return (
     <header>
-      <div className="max-w-site mx-auto">
+      <div className="container pt-10 pb-16 flex items-center justify-between">
         <Link to="/">
-          <img src={logo.filename} alt={logo.alt} />
+          <img src={`${logo.filename}/m/352x70`} alt={logo.alt} />
         </Link>
         <MainMenu />
       </div>

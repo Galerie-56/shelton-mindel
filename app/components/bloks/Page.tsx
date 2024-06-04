@@ -3,7 +3,6 @@ import type { PageStoryblok } from "~/types";
 
 export const Page = ({ blok }: { blok: PageStoryblok }) => {
   const { body, _uid, headline } = blok;
-  console.log("body", body);
 
   return (
     <div key={_uid} {...storyblokEditable(blok)}>

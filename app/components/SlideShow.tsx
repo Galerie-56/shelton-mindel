@@ -8,7 +8,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 
-export const SlideShow = ({ images }) => {
+export const SlideShow = ({ images, size = "1920x1080", ...props }) => {
   return (
     <Carousel
       plugins={[
@@ -25,8 +25,11 @@ export const SlideShow = ({ images }) => {
     >
       <CarouselContent>
         {images.map((image) => (
-          <CarouselItem key={image.url} className="flex justify-center">
-            <img src={image.filename} alt={image.alt_text} />
+          <CarouselItem
+            key={image.url}
+            className={`flex justify-center ${props.className}`}
+          >
+            <img src={`${image.filename}/m/${size}`} alt={image.alt_text} />
           </CarouselItem>
         ))}
       </CarouselContent>
