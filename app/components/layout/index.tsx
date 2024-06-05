@@ -9,7 +9,7 @@ export const GlobalLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <main className="container prose">{children}</main>
+      <main className="container ">{children}</main>
       <Footer />
     </>
   );
