@@ -100,4 +100,7 @@
       fill: black;
     }
   }
+  button {
+    @apply bg-primary text-white uppercase hover:bg-black transition-all duration-300 px-2  py-2;
+  }
 }

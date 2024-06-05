@@ -12,16 +12,15 @@ export const ArchitectEye = ({ blok }: ArchitectEyeStoryblok) => {
   });
   return (
     <div
-      {...storyblokEditable(blok)}
       key={_uid}
-      className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-300 py-4"
+      className="flex flex-col md:flex-row justify-between items-start  border-t border-gray-300 py-4"
     >
       {date ? (
         <div className=" text-sm mb-2 md:mb-0 md:w-1/6">{formattedDate}</div>
       ) : (
         <div className="w-1/6" />
       )}
-      <div className="mb-2 md:mb-0 md:w-1/6 mr-20">
+      <div className="mb-2 md:mb-0 md:w-1/6 md:mr-20">
         <a href={link} target="_blank" rel="noopener noreferrer">
           <img
             src={`${image.filename}/m/166x0/`}
