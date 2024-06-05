@@ -1,21 +1,48 @@
 import { storyblokEditable } from "@storyblok/react";
+import { Divide } from "lucide-react";
 import { ArchitectEyeStoryblok } from "~/types";
 
 export const ArchitectEye = ({ blok }: ArchitectEyeStoryblok) => {
   const { _uid, date, image, description, link, title } = blok;
+
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
   return (
-    <div {...storyblokEditable(blok)} key={_uid}>
-      <div>{date}</div>
-      <div>
+    <div
+      {...storyblokEditable(blok)}
+      key={_uid}
+      className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-300 py-4"
+    >
+      {date ? (
+        <div className=" text-sm mb-2 md:mb-0 md:w-1/6">{formattedDate}</div>
+      ) : (
+        <div className="w-1/6" />
+      )}
+      <div className="mb-2 md:mb-0 md:w-1/6 mr-20">
         <a href={link} target="_blank" rel="noopener noreferrer">
-          <img src={`${image.filename}/m/166x0/`} alt={image.alt} />
+          <img
+            src={`${image.filename}/m/166x0/`}
+            alt={image.alt}
+            className="w-full h-auto"
+          />
         </a>
       </div>
-      <div>
-        <a href={link} target="_blank" rel="noopener noreferrer">
+      <div className="md:w-4/6">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-black"
+        >
           {title}
         </a>
-        <div dangerouslySetInnerHTML={{ __html: description }} />
+        <div
+          className="mt-2 text-sm"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
     </div>
   );
