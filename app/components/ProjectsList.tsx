@@ -57,13 +57,13 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
     fetchProjects(nextPage, uuid || "");
   };
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {projects?.map((project: ProjectStoryblok) => (
         <ProjectCard key={project.id} project={project} />
       ))}
       {total && projects.length < total && (
-        <div className="">
-          <button className="button mx-auto py-4 px-7" onClick={loadMore}>
+        <div className="col-span-3 flex justify-center mt-4">
+          <button className="button py-4 px-7" onClick={loadMore}>
             Load More
           </button>
         </div>

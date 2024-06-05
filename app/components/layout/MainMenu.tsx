@@ -6,7 +6,11 @@ import { type loader } from "~/root";
 export const MainMenu = () => {
   let { headerNav: nav } = useLoaderData<typeof loader>();
   return (
-    <nav className="menu" aria-label="main" {...storyblokEditable(nav)}>
+    <nav
+      className="menu hidden md:block"
+      aria-label="main"
+      {...storyblokEditable(nav)}
+    >
       <ul role="menu" className="flex">
         {nav.map((nestedBlok: NavItemStoryblok) => (
           <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
