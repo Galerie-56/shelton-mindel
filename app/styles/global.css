@@ -94,4 +94,10 @@
   .menu-item {
     @apply uppercase tracking-wide mr-7;
   }
+  .social-icon {
+    @apply text-[20px] transition-all duration-300;
+    &:hover {
+      fill: black;
+    }
+  }
 }

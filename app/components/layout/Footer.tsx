@@ -1,6 +1,11 @@
 import { useLoaderData } from "@remix-run/react";
 import { type loader } from "~/root";
-import { Facebook, Twitter, Instagram, Pinterest } from "lucide-react";
+import {
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaPinterestSquare,
+} from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export const Footer = () => {
   let {
@@ -24,18 +29,34 @@ export const Footer = () => {
           </div>
           <div>
             <h3 className="uppercase">Social Media</h3>
-            <div className="flex space-x-3">
-              <a href={facebook} target="_blank" rel="noopener noreferrer">
-                <Facebook />
+            <div className="flex space-x-2">
+              <a
+                href={facebook.cached_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebookSquare className="social-icon" />
               </a>
-              <a href={twitter} target="_blank" rel="noopener noreferrer">
-                <img src="/icons/twitter.svg" alt="Twitter" />
+              <a
+                href={twitter.cached_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaSquareXTwitter className="social-icon" />
               </a>
-              <a href={instagram} target="_blank" rel="noopener noreferrer">
-                <img src="/icons/instagram.svg" alt="Instagram" />
+              <a
+                href={instagram.cached_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagramSquare className="social-icon" />
               </a>
-              <a href={pinterest} target="_blank" rel="noopener noreferrer">
-                <img src="/icons/pinterest.svg" alt="Pinterest" />
+              <a
+                href={pinterest.cached_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaPinterestSquare className="social-icon" />
               </a>
             </div>
           </div>
