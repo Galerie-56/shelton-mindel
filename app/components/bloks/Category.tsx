@@ -10,7 +10,7 @@ export const Category = ({ blok }: CategoryStoryblok) => {
   return (
     <div {...storyblokEditable(blok)} key={blok._uid}>
       <div className="mb-10">
-        <h1>{blok.headline}</h1>
+        <h1 className="text-[24px] uppercase mb-10">{blok.headline}</h1>
         {blok.description ? <p>{blok.description}</p> : null}
       </div>
       <ProjectsList uuid={uuid} />
