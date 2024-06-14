@@ -123,7 +123,7 @@
       "name": "award",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.253Z",
-      "updated_at": "2024-05-23T15:15:16.193Z",
+      "updated_at": "2024-06-14T14:56:59.270Z",
       "id": 4778319,
       "schema": {
         "title": {
@@ -151,6 +151,10 @@
           "type": "textarea",
           "required": false,
           "pos": 4
+        },
+        "description_link": {
+          "type": "multilink",
+          "pos": 5
         }
       },
       "image": null,
@@ -232,13 +236,13 @@
       "content_type_asset_preview": null
     },
     {
-      "name": "Category",
+      "name": "category",
       "display_name": null,
       "created_at": "2024-05-23T14:10:45.059Z",
-      "updated_at": "2024-05-23T14:47:56.558Z",
+      "updated_at": "2024-06-04T09:04:46.313Z",
       "id": 5834127,
       "schema": {
-        "Headline": {
+        "headline": {
           "type": "text"
         }
       },
@@ -249,7 +253,7 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "Category",
+      "real_name": "category",
       "component_group_uuid": null,
       "color": "#fbce41",
       "icon": "block-share",
@@ -787,7 +791,7 @@
       "name": "project",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.195Z",
-      "updated_at": "2024-05-23T14:21:36.345Z",
+      "updated_at": "2024-06-04T09:55:38.569Z",
       "id": 4778317,
       "schema": {
         "headline": {
@@ -880,8 +884,10 @@
           "use_uuid": true,
           "source": "internal_stories",
           "filter_content_type": [
-            "Category"
-          ]
+            "Category",
+            "category"
+          ],
+          "folder_slug": "categories/"
         }
       },
       "image": null,

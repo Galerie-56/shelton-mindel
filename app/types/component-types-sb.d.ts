@@ -78,6 +78,7 @@ export interface AwardStoryblok {
   link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   thumbnail?: AssetStoryblok;
   description?: string;
+  description_link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   _uid: string;
   component: "award";
   [k: string]: any;
@@ -108,9 +109,9 @@ export interface CareerStoryblok {
 }
 
 export interface CategoryStoryblok {
-  Headline?: string;
+  headline?: string;
   _uid: string;
-  component: "Category";
+  component: "category";
   [k: string]: any;
 }
 
@@ -283,7 +284,7 @@ export interface ProjectStoryblok {
   seo?: SeoStoryblok[];
   pictures?: MultiassetStoryblok;
   photographer?: string;
-  category?: StoryblokStory<CategoryStoryblok> | string;
+  category?: StoryblokStory<CategoryStoryblok> | StoryblokStory<CategoryStoryblok> | string;
   _uid: string;
   component: "project";
   [k: string]: any;
