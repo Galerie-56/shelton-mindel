@@ -14,6 +14,7 @@ export const ArchitectEye = ({ blok }: ArchitectEyeStoryblok) => {
     <div
       key={_uid}
       className="flex flex-col md:flex-row justify-between items-start  border-t border-gray-300 py-4"
+      {...storyblokEditable(blok)}
     >
       {date ? (
         <div className=" text-sm mb-2 md:mb-0 md:w-1/6">{formattedDate}</div>
