@@ -1,60 +1,35 @@
 import { NavLink } from "@remix-run/react";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import type { NavItemStoryblok } from "~/types";
-import Collapse from "~/components/Collapse";
+import { FaCaretDown } from 'react-icons/fa'; // Import caret icon
 
-
-
-export const NavItem = ({ blok }: NavItemStoryblok) => {
+export const NavItem = ({ blok, mobile }: NavItemStoryblok) => {
   const { label, link, sub_menu, _uid, is_submenu } = blok;
-
   const hasSubmenu = sub_menu && sub_menu.length > 0;
 
-
-const SubMenu = ({ mobile }: { mobile: boolean }) => {
-  if (mobile) {
-    return (
-      <Collapse trigger={label} className="sub-menu-collapse">
-        <ul className="sub-menu max-w-[180px]">
+  return (
+    <li
+      {...storyblokEditable(blok)}
+      key={_uid}
+      className={`menu-item ${hasSubmenu ? 'relative group' : ''}`}
+    >
+      <NavLink
+        prefetch="intent"
+        to={link.cached_url}
+        className={`inline-flex items-center hover:text-black ${hasSubmenu ? '' : ''}`}
+      >
+        {label}
+        {hasSubmenu && <FaCaretDown className="ml-1" />}
+      </NavLink>
+      {hasSubmenu && (
+        <ul className="sub-menu absolute opacity-0 left-0  group-hover:block group-hover:opacity-100  bg-white mt-3 transition-all duration-500 -translate-y-[10px] group-hover:-translate-y-[0px] text-sm border border-gray-300 p-2 z-50">
           {sub_menu.map((nestedBlok: NavItemStoryblok) => (
-            <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+            <li key={nestedBlok._uid} className="mb-2 text-sm leading-tight ">
+              <StoryblokComponent blok={nestedBlok} />
+            </li>
           ))}
         </ul>
-      </Collapse>
-    );
-  } else {
-    return (
-      <ul className="sub-menu max-w-[180px]">
-        {sub_menu.map((nestedBlok: NavItemStoryblok) => (
-          <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-        ))}
-      </ul>
-    );
-  }
-};
-  return (
-    <>
-      {link.linktype === "story" ? (
-        <NavLink
-          key={_uid}
-          prefetch="intent"
-          to={`/${link?.cached_url}`}
-          {...storyblokEditable(blok)}
-          className={`menu-item ${is_submenu && "sub-menu-item"}`}
-        >
-          {label}
-        </NavLink>
-      ) : (
-        <a
-          key={_uid}
-          href={link.url}
-          target={link.target}
-          {...storyblokEditable(blok)}
-          className="menu-item"
-        >
-          {label}
-        </a>
       )}
-    </>
+    </li>
   );
 };

@@ -95,7 +95,7 @@
 
 @layer components {
   .menu-item {
-    @apply uppercase tracking-wide mr-7;
+    @apply uppercase tracking-wide mr-7 transition-all duration-300;
   }
   .social-icon {
     @apply text-[20px] transition-all duration-300;
@@ -106,4 +106,16 @@
   button {
     @apply bg-primary text-white uppercase hover:bg-black transition-all duration-300 px-2  py-2;
   }
+}
+
+.menu-item a {
+  transition: color 0.3s ease-in-out; /* Smooth transition for color change */
+}
+
+.menu-item a:hover {
+  color: black; /* Change text color to black on hover */
+}
+
+.menu-item li:hover {
+  color: black; /* Ensure submenu items also change color individually on hover */
 }
