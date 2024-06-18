@@ -5,6 +5,7 @@ import { type loader } from "~/root";
 
 export const MainMenu = () => {
   let { headerNav: nav } = useLoaderData<typeof loader>();
+  console.log("nav", nav);
   return (
     <nav
       className="menu hidden md:block"
