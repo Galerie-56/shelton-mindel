@@ -3,7 +3,8 @@ import type { loader } from "~/root";
 import { MainMenu } from "./MainMenu";
 
 export const Header = () => {
-  const { logo, headerNav } = useLoaderData<typeof loader>();
+  const { logo } = useLoaderData<typeof loader>();
+
   return (
     <header>
       <div className="container pt-10 pb-16 flex items-center justify-between">
