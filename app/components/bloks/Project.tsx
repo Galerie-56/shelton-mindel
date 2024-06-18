@@ -90,7 +90,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
                   <div className="uppercase">{architect}</div>
                 </div>
               )}
-              {awards && (
+              {awards?.length > 0 && (
                 <div>
                   <h4 className="text-[12px]">Awards</h4>
                   <div className="uppercase">
@@ -102,7 +102,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
                   </div>
                 </div>
               )}
-              {press && (
+              {press.length >0 && (
                 <div>
                   <h4 className="text-[12px]">Press</h4>
                   <div className="uppercase">
