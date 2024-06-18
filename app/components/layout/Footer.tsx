@@ -6,10 +6,13 @@ import {
   FaPinterestSquare,
 } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { renderRichText } from "@storyblok/react";
 
 export const Footer = () => {
   let {
     address,
+    address_2,
+    address_3,
     footerText,
     mail,
     facebook,
@@ -18,14 +21,22 @@ export const Footer = () => {
     pinterest,
     phone,
   } = useLoaderData<typeof loader>();
+  console.log("address",address_2);
+
 
   return (
     <footer className="container mt-10 text-[14px] mb-10">
-      <div className="max-w-site mx-auto flex justify-between items-center">
+      <div className="max-w-site mx-auto flex justify-between">
         <div className="space-y-4">
           <div>
             <h3 className="uppercase [&>a]:underline">Address</h3>
-            <p dangerouslySetInnerHTML={{ __html: address }} />
+            <div className="md:flex md:gap-20">
+              <p dangerouslySetInnerHTML={{ __html: address }} className="mb-5 md:mb-0" />
+              <p dangerouslySetInnerHTML={{ __html: address_2 }} className="mb-5 md:mb-0" />
+              <p dangerouslySetInnerHTML={{ __html: address_3 }} />
+            </div>
+            {/* <p>hello{renderRichText(address_2)}</p>
+            <p>{renderRichText(address_3)}</p> */}
           </div>
           <div>
             <h3 className="uppercase">Social Media</h3>

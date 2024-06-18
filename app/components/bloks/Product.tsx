@@ -6,7 +6,6 @@ import { ProductStoryblok } from "~/types";
 export const Product = ({ blok }: { blok: ProductStoryblok }) => {
   const { productName } = useLoaderData();
   const {
-
     image,
     text,
     product_series: series,

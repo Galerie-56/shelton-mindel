@@ -116,9 +116,9 @@ export interface CategoryStoryblok {
 }
 
 export interface ConfigStoryblok {
-  logo?: AssetStoryblok;
-  header_nav?: NavItemStoryblok[];
   address?: string;
+  address_2?: string;
+  address_3?: string;
   phone?: string;
   mail?: string;
   facebook?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
@@ -126,6 +126,8 @@ export interface ConfigStoryblok {
   instagram?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   pinterest?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   footer_text?: string;
+  logo?: AssetStoryblok;
+  header_nav?: NavItemStoryblok[];
   posts_per_page?: string;
   _uid: string;
   component: "config";
