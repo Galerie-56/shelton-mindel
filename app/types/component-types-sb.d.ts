@@ -225,7 +225,6 @@ export interface PeriodicalsStoryblok {
 }
 
 export interface ProductStoryblok {
-  headline?: string;
   subtitle?: string;
   text?: RichtextStoryblok;
   image?: AssetStoryblok;
@@ -273,7 +272,6 @@ export type MultiassetStoryblok = {
 }[];
 
 export interface ProjectStoryblok {
-  headline?: string;
   brief?: RichtextStoryblok;
   solution?: RichtextStoryblok;
   slideshow?: MultiassetStoryblok;

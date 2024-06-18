@@ -616,12 +616,9 @@
       "name": "product",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.175Z",
-      "updated_at": "2024-05-11T16:21:03.839Z",
+      "updated_at": "2024-06-18T14:09:48.942Z",
       "id": 4778316,
       "schema": {
-        "headline": {
-          "type": "text"
-        },
         "subtitle": {
           "type": "text"
         },
@@ -791,12 +788,9 @@
       "name": "project",
       "display_name": null,
       "created_at": "2023-10-24T16:06:22.195Z",
-      "updated_at": "2024-06-04T09:55:38.569Z",
+      "updated_at": "2024-06-18T14:06:50.714Z",
       "id": 4778317,
       "schema": {
-        "headline": {
-          "type": "text"
-        },
         "brief": {
           "type": "richtext"
         },

@@ -1,9 +1,12 @@
+import { useLoaderData } from "@remix-run/react";
 import { storyblokEditable, renderRichText } from "@storyblok/react";
 import { ProductStoryblok } from "~/types";
 
+
 export const Product = ({ blok }: { blok: ProductStoryblok }) => {
+  const { productName } = useLoaderData();
   const {
-    headline,
+
     image,
     text,
     product_series: series,
@@ -19,7 +22,7 @@ export const Product = ({ blok }: { blok: ProductStoryblok }) => {
     >
       <div className="flex gap-20">
         <div className="w-1/2">
-          <h1>{headline}</h1>
+          <h1>{productName}</h1>
           <div dangerouslySetInnerHTML={{ __html: renderRichText(text) }} />
         </div>
         <div className="w-1/2">

@@ -42,7 +42,7 @@ export const loader: LoaderFunction = async ({
     getProjectCardData(p)
   );
 
-  return json({ story: data?.story, total, projects, perPage });
+  return json({ story: data?.story, total, projects, perPage, projectName: data?.story?.name });
 };
 
 const ProjectsPage = () => useStoryblokData("projects.$", ["project.category"]);

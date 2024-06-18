@@ -3,10 +3,11 @@ import { storyblokEditable, renderRichText } from "@storyblok/react";
 import { ProjectStoryblok } from "~/types";
 import { SlideShow } from "../SlideShow";
 import { Link } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
 export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
   const {
-    headline,
+
     architect,
     awards,
     brief,
@@ -18,6 +19,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     solution,
     seo,
   } = blok;
+  const { projectName } = useLoaderData();
 
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -38,7 +40,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     <article {...storyblokEditable(blok)} key={blok._uid} className="">
       <div className="flex gap-20">
         <div className="w-1/2">
-          <h1>{headline}</h1>
+          <h1>{projectName}</h1>
           <div
             dangerouslySetInnerHTML={{
               __html: `Problem: ${renderRichText(brief)}`,

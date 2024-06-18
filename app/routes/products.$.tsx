@@ -44,7 +44,7 @@ export const loader: LoaderFunction = async ({
     getProductCardData(p)
   );
 
-  return json({ story: data?.story, total, products, perPage });
+  return json({ story: data?.story, total, products, perPage, productName: data?.story?.name });
 };
 
 const ProductsPage = () => useStoryblokData("products.$");
