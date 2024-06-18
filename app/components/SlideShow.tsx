@@ -29,7 +29,7 @@ export const SlideShow = ({ images, size = "1920x1080", ...props }) => {
             key={image.url}
             className={`flex justify-center ${props.className}`}
           >
-            <img src={`${image.filename}/m/${size}`} alt={image.alt_text} />
+            <img src={`${image.filename}/m/${size}`} alt={image.alt_text} className="w-full h-auto object-cover" />
           </CarouselItem>
         ))}
       </CarouselContent>
