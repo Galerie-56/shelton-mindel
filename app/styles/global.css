@@ -91,6 +91,9 @@
   footer h3 {
     @apply text-[10px] uppercase mb-1;
   }
+  a{
+    @apply hover:text-black;
+  }
 }
 
 @layer components {

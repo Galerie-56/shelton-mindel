@@ -18,8 +18,13 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     slideshow,
     solution,
     seo,
+
   } = blok;
-  const { projectName } = useLoaderData();
+  const { projectName,  prevProject,
+    nextProject, } = useLoaderData();
+
+    console.log("prevProject", prevProject);
+    console.log("nextProject", nextProject);
 
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -114,15 +119,17 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
               )}
             </div>
             <div className="w-1/2 space-y-5">
-              <div>
+           {nextProject &&   <div>
                 <h4 className="text-[12px]">Next</h4>
-                <div className="uppercase">Next project</div>
+                <Link prefetch="intent" to={`/${nextProject?.full_slug}`} className="uppercase">{nextProject?.headline}</Link>
               </div>
-              <div>
+            }
+            {prevProject && <div>
                 <h4 className="text-[12px]">Previous</h4>
-                <div className="uppercase">Previous project</div>
+                <Link prefetch="intent" to={`/${prevProject?.full_slug}`} className="uppercase">{prevProject?.headline}</Link>
               </div>
-              <div>
+            }
+            <div>
                 <h4 className="text-[12px]">View all</h4>
                 <Link to="/projects" prefetch="intent" className="uppercase">
                   projects

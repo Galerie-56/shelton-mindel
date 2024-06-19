@@ -2,7 +2,7 @@ import type { ProjectStoryblok, ProductStoryblok } from "~/types";
 export function getProjectCardData(p: ProjectStoryblok) {
   return {
     id: p.id,
-    headline: p.content.headline,
+    headline: p.name,
     full_slug: p.full_slug,
     image: p.content.slideshow[0],
     category: p.content.category,
@@ -13,7 +13,7 @@ export function getProjectCardData(p: ProjectStoryblok) {
 export function getProductCardData(p: ProductStoryblok) {
   return {
     id: p.id,
-    headline: p.content.headline,
+    headline: p.name,
     subtitle: p.content.subtitle,
     full_slug: p.full_slug,
     image: p.content.image,

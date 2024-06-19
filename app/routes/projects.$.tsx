@@ -42,7 +42,18 @@ export const loader: LoaderFunction = async ({
     getProjectCardData(p)
   );
 
-  return json({ story: data?.story, total, projects, perPage, projectName: data?.story?.name });
+  // Find current project index
+  const currentIndex = projects.findIndex(p => p.id === data.story.id);
+
+  // Determine previous and next projects
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  console.log("prevProject", prevProject);
+  console.log("nextProject", nextProject);
+
+
+  return json({ story: data?.story, total, projects, perPage, projectName: data?.story?.name, prevProject,
+    nextProject });
 };
 
 const ProjectsPage = () => useStoryblokData("projects.$", ["project.category"]);
