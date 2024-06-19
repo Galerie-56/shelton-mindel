@@ -43,8 +43,8 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
 
   return (
     <article {...storyblokEditable(blok)} key={blok._uid} className="">
-      <div className="flex gap-20">
-        <div className="w-1/2">
+      <div className="md:flex gap-20">
+        <div className="md:w-1/2">
           <h1>{projectName}</h1>
           <div
             dangerouslySetInnerHTML={{
@@ -71,7 +71,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
             {isExpanded ? "Close" : "Read More"}
           </button>
         </div>
-        <div className="w-1/2 uppercase">
+        <div className="md:w-1/2 uppercase">
           <div className="flex gap-10">
             <div className="w-1/2 space-y-5">
               <div>
