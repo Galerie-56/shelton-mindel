@@ -5,11 +5,13 @@ export const ProductCard = ({ product }: { product: ProductStoryblok }) => {
   const { headline, image, full_slug, subtitle } = product;
 
   return (
-    <div>
-      <Link to={`/${full_slug}`} className="text-black">
+    <div className="relative overflow-hidden">
+      <Link to={`/${full_slug}`}>
         <img src={image?.filename} alt={image?.alt_text} />
-        <h2>{headline}</h2>
-        <div>{subtitle}</div>
+        <div className="absolute inset-0 bg-white bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col p-5 uppercase text-primary">
+          <h2>{headline}</h2>
+          <div className="text-sm">{subtitle}</div>
+        </div>
       </Link>
     </div>
   );

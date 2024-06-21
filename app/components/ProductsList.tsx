@@ -21,6 +21,8 @@ export const ProductsList = ({ uuid }: ProductsListType) => {
   const { total, products: firstsProducts } = matches[1].data as RouteData;
   const [products, setProducts] = useState(firstsProducts);
 
+  console.log("total", total);
+
   interface GlobalData {
     perPage: number;
   }
@@ -55,7 +57,7 @@ export const ProductsList = ({ uuid }: ProductsListType) => {
     fetchProducts(nextPage, uuid || "");
   };
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {products?.map((product: ProductStoryblok) => (
         <ProductCard key={product.id} product={product} />
       ))}

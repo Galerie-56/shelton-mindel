@@ -37,7 +37,7 @@ export const loader: LoaderFunction = async ({
     resolve_relations: resolveRelations,
   });
 
-  const total = await getTotal();
+  const total = await getTotal("projects");
   const projects = projectsData.stories.map((p: ProjectStoryblok) =>
     getProjectCardData(p)
   );

@@ -54,7 +54,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     search_term: uuid,
   });
 
-  const total = await getTotal(uuid);
+  const total = await getTotal(uuid,"projects");
 
   const headers = {
     ...cacheControl,

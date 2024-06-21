@@ -39,7 +39,7 @@ export const loader: LoaderFunction = async ({
     is_startpage: false,
   });
 
-  const total = await getTotal();
+  const total = await getTotal("products");
   const products = productsData.stories.map((p: ProductStoryblok) =>
     getProductCardData(p)
   );

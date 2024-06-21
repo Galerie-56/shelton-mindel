@@ -11,7 +11,7 @@ export const Award = ({ blok }: AwardStoryblok) => {
       className="flex flex-col items-start py-4"
     >
       <div className="mb-2 w-full">
-        <a href={link} target="_blank" rel="noopener noreferrer">
+        <a href={link?.cached_url} target="_blank" rel="noopener noreferrer">
           <img
             src={`${thumbnail.filename}/m/400x250/`}
             alt={thumbnail.alt}
