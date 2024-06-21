@@ -8,7 +8,7 @@ export const MainMenu = () => {
 
   return (
     <nav
-      className="menu hidden md:block"
+      className="menu hidden lg:block"
       aria-label="main"
       {...storyblokEditable(nav)}
     >
