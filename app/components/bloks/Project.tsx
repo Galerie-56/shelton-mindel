@@ -4,6 +4,7 @@ import { ProjectStoryblok } from "~/types";
 import { SlideShow } from "../SlideShow";
 import { Link } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
+import { SocialShare } from "../SocialShare";
 
 export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
   const {
@@ -23,8 +24,6 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
   const { projectName,  prevProject,
     nextProject, } = useLoaderData();
 
-    console.log("prevProject", prevProject);
-    console.log("nextProject", nextProject);
 
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -41,11 +40,15 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     }
   }, [isExpanded]);
 
+  const url = typeof window !== "undefined" && window.location.href;
+
+
   return (
     <article {...storyblokEditable(blok)} key={blok._uid} className="">
+      <h1>{projectName}</h1>
       <div className="md:flex gap-20">
         <div className="md:w-1/2">
-          <h1>{projectName}</h1>
+
           <div
             dangerouslySetInnerHTML={{
               __html: `Problem: ${renderRichText(brief)}`,
@@ -70,6 +73,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
           >
             {isExpanded ? "Close" : "Read More"}
           </button>
+          <SocialShare url={url} />
         </div>
         <div className="md:w-1/2 uppercase">
           <div className="flex gap-10">
@@ -139,7 +143,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
           </div>
         </div>
       </div>
-      <SlideShow images={slideshow} />
+      <SlideShow images={slideshow} className="mt-7" />
     </article>
   );
 };

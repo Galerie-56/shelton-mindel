@@ -21,7 +21,7 @@ export const Footer = () => {
     pinterest,
     phone,
   } = useLoaderData<typeof loader>();
-  console.log("address",address_2);
+
 
 
   return (

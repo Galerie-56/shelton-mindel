@@ -3,7 +3,7 @@ import { ProjectStoryblok } from "~/types";
 
 export const ProjectCard = ({ project }: { project: ProjectStoryblok }) => {
   const { headline, image, project_code, full_slug, category, name } = project;
-  console.log("project", project);
+
 
 
   return (
