@@ -83,7 +83,10 @@
     @apply border-border;
   }
   h1 {
-    @apply text-[24px] uppercase mb-10;
+    @apply text-[24px] uppercase mb-8;
+  }
+  h2 {
+    @apply text-[20px] uppercase mb-3;
   }
   body {
     @apply bg-background text-foreground;

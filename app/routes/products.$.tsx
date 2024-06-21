@@ -44,7 +44,15 @@ export const loader: LoaderFunction = async ({
     getProductCardData(p)
   );
 
-  return json({ story: data?.story, total, products, perPage, productName: data?.story?.name });
+  // Find current project index
+  const currentIndex = products.findIndex((p: ProductStoryblok) => p.id === data.story.id);
+
+  // Determine previous and next projects
+  const prevProduct = currentIndex > 0 ? products[currentIndex - 1] : null;
+  const nextProduct =
+    currentIndex < products.length - 1 ? products[currentIndex + 1] : null;
+
+  return json({ story: data?.story, total, products, perPage, productName: data?.story?.name, prevProduct, nextProduct });
 };
 
 const ProductsPage = () => useStoryblokData("products.$");
