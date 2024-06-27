@@ -8,7 +8,12 @@ export const HomeSlideShow = ({ blok }: { blok: SlideshowStoryblok }) => {
   return (
     <div className="container ">
       <Link to="/projects" {...storyblokEditable(blok)} key={_uid}>
-        <SlideShow images={images} className="h-[300px] md:h-[500px] lg:h-[763px]" size="1220x0" />
+        <SlideShow
+          images={images}
+          location="home"
+          className="h-[300px] md:h-[500px] lg:h-[763px]"
+          size="1220x0"
+        />
       </Link>
     </div>
   );
