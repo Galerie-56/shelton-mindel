@@ -8,7 +8,7 @@ import { ProjectStoryblok } from "~/types";
 import { SlideShow } from "../SlideShow";
 import { Link } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
-import { SocialShare } from "../SocialShare";
+// import { SocialShare } from "../SocialShare";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import { LightboxCarousel } from "~/components/LightBoxCarousel";
 
@@ -75,7 +75,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
           >
             {isExpanded ? "Close" : "Read More"}
           </button>
-          <SocialShare url={url} />
+          {/* <SocialShare url={url} /> */}
         </div>
         <div className="md:w-1/2 uppercase">
           <div className="flex gap-10">

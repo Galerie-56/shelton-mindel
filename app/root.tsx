@@ -104,7 +104,7 @@ export const loader = async () => {
     mail,
     facebook,
     instagram,
-    twitter,
+    linkedin,
     pinterest,
     posts_per_page,
   } = config?.story?.content || {};
@@ -122,7 +122,7 @@ export const loader = async () => {
     mail,
     facebook,
     instagram,
-    twitter,
+    linkedin,
     pinterest,
     perPage: posts_per_page,
   });

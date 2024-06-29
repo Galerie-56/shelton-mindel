@@ -5,7 +5,7 @@ import {
   FaInstagramSquare,
   FaPinterestSquare,
 } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import { renderRichText } from "@storyblok/react";
 
 export const Footer = () => {
@@ -17,12 +17,10 @@ export const Footer = () => {
     mail,
     facebook,
     instagram,
-    twitter,
+    linkedin,
     pinterest,
     phone,
   } = useLoaderData<typeof loader>();
-
-
 
   return (
     <footer className="container mt-10 text-[14px] mb-10">
@@ -31,8 +29,14 @@ export const Footer = () => {
           <div>
             <h3 className="uppercase [&>a]:underline">Address</h3>
             <div className="md:flex md:gap-20">
-              <p dangerouslySetInnerHTML={{ __html: address }} className="mb-5 md:mb-0" />
-              <p dangerouslySetInnerHTML={{ __html: address_2 }} className="mb-5 md:mb-0" />
+              <p
+                dangerouslySetInnerHTML={{ __html: address }}
+                className="mb-5 md:mb-0"
+              />
+              <p
+                dangerouslySetInnerHTML={{ __html: address_2 }}
+                className="mb-5 md:mb-0"
+              />
               <p dangerouslySetInnerHTML={{ __html: address_3 }} />
             </div>
             {/* <p>hello{renderRichText(address_2)}</p>
@@ -49,11 +53,11 @@ export const Footer = () => {
                 <FaFacebookSquare className="social-icon" />
               </a>
               <a
-                href={twitter.cached_url}
+                href={linkedin.cached_url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaSquareXTwitter className="social-icon" />
+                <FaLinkedin className="social-icon" />
               </a>
               <a
                 href={instagram.cached_url}
