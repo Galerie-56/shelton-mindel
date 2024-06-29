@@ -40,11 +40,10 @@ export const SlideShow = ({
             <img
               src={`${image.filename}/m/${location === "home" ? size : ""}`}
               alt={image.alt_text}
-              className={`${
-                location !== "home"
-                  ? "max-w-full max-h-full"
-                  : "w-full h-auto object-cover"
-              }`}
+              className=""
+              w-full
+              h-auto
+              object-cover
             />
           </div>
         </CarouselItem>
@@ -90,7 +89,7 @@ export const SlideShow = ({
           <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500" />
         )}
       </Carousel>
-      {location !== "home" && (
+      {/* {location !== "home" && (
         <div className="flex gap-5 mt-4 flex-wrap">
           {images.map((image, index) => (
             <div
@@ -116,7 +115,7 @@ export const SlideShow = ({
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </>
   );
 };

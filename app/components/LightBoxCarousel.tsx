@@ -8,7 +8,11 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 
-export const LightboxCarousel = ({ images, startIndex }) => {
+export const LightboxCarousel = ({
+  images,
+  startIndex,
+  location = "product",
+}) => {
   const [activeIndex, setActiveIndex] = useState(startIndex);
   console.log("images", images);
 
@@ -28,14 +32,22 @@ export const LightboxCarousel = ({ images, startIndex }) => {
       <CarouselContent>
         {images.map((item) => (
           <CarouselItem key={item._uid}>
-            <div className="w-full h-full flex flex-col justify-center items-center">
-              <img
-                src={`${item.image?.filename}/m/`}
-                className="w-full h-full object-contain"
-              />
-              <div className="text-center font-bold text-primary">
-                {item.name}
+            <div className="flex flex-col justify-center items-center h-full">
+              <div className="flex justify-center items-center h-full">
+                <img
+                  src={`${
+                    location === "product"
+                      ? item?.image?.filename
+                      : item?.filename
+                  }/m/1000x0`}
+                  className="w-full h-auto max-h-full object-contain"
+                />
               </div>
+              {item.name && (
+                <div className="text-center font-bold text-primary">
+                  {item.name}
+                </div>
+              )}
               {item.link && (
                 <a
                   href={item.link?.cached_url}
