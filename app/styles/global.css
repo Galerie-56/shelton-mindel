@@ -94,7 +94,7 @@
   footer h3 {
     @apply text-[10px] uppercase mb-1;
   }
-  a{
+  a {
     @apply hover:text-black;
   }
 }
@@ -103,13 +103,16 @@
   .menu-item {
     @apply uppercase tracking-wide mr-7 transition-all duration-300;
   }
+  .mobile-sub-menu .menu-item {
+    @apply !capitalize;
+  }
   .social-icon {
     @apply text-[20px] transition-all duration-300;
     &:hover {
       fill: black;
     }
   }
-  button {
+  .button {
     @apply bg-primary text-white uppercase hover:bg-black transition-all duration-300 px-2  py-2;
   }
 }

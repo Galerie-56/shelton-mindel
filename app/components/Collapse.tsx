@@ -1,8 +1,10 @@
+// @ts-nocheck
 import React, { useState } from "react";
-import Collapsible from "@kunukn/react-collapse";
+import Collapse from "@kunukn/react-collapse";
+
 import { GoChevronRight as ChevronRight } from "react-icons/go";
 
-const Collapse = ({ trigger, children, className, ...props }) => {
+export const Collapsible = ({ trigger, children, className, ...props }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -15,16 +17,14 @@ const Collapse = ({ trigger, children, className, ...props }) => {
         <div className="uppercase">{trigger}</div>
 
         <ChevronRight
-          className={`font-bold text-[20px] text-white lg:hidden ${
+          className={`font-bold text-[20px] text-primary lg:hidden ${
             open && "transform rotate-90"
           }`}
         />
       </button>
-      <Collapsible className="duration-500 ease-out " isOpen={open}>
+      <Collapse className="duration-500 ease-out " isOpen={open}>
         {children}
-      </Collapsible>
+      </Collapse>
     </div>
   );
 };
-
-export default Collapse;

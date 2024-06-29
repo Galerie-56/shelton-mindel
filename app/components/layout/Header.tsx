@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import type { loader } from "~/root";
 import { MainMenu } from "./MainMenu";
+import { SlideMenu } from "./SlideMenu";
 
 export const Header = () => {
   const { logo } = useLoaderData<typeof loader>();
@@ -9,9 +10,14 @@ export const Header = () => {
     <header>
       <div className="container py-5 lg:pt-10 lg:pb-12 flex items-center justify-between">
         <Link to="/">
-          <img src={`${logo.filename}/m/352x70`} alt={logo.alt} className="md:w-full w-[200px]" />
+          <img
+            src={`${logo.filename}/m/352x70`}
+            alt={logo.alt}
+            className="md:w-full w-[200px]"
+          />
         </Link>
         <MainMenu />
+        <SlideMenu className="lg:hidden" />
       </div>
     </header>
   );
