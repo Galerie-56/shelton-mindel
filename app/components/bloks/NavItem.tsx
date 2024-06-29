@@ -12,7 +12,7 @@ export const NavItem = ({ blok, mobile }: NavItemStoryblok) => {
     if (mobile) {
       return (
         <Collapsible trigger={label} className="font-semibold text-primary ">
-          <ul className="sub-menu max-w-[180px] text-lg ml-3 space-y- 1 mobile-sub-menu">
+          <ul className="sub-menu max-w-[180px] text-lg ml-3 my-4 space-y-3 leading-tight mobile-sub-menu">
             {sub_menu.map((nestedBlok: NavItemStoryblok) => (
               <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
             ))}
