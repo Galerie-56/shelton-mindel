@@ -1,23 +1,16 @@
 import { useLoaderData } from "@remix-run/react";
-import { storyblokEditable, renderRichText } from "@storyblok/react";
+import {
+  storyblokEditable,
+  renderRichText,
+  StoryblokComponent,
+} from "@storyblok/react";
 import { ProductStoryblok } from "~/types";
 import { Link } from "@remix-run/react";
-import React, { useState } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "~/components/ui/carousel";
-import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
+import React from "react";
 
 export const Product = ({ blok }: { blok: ProductStoryblok }) => {
   const { productName, nextProduct, prevProduct } = useLoaderData();
-  const { image, text, product_series: series, brochures, seo } = blok;
-
-  // Add a new state variable for the active image index
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { text, product_series: series, brochures } = blok;
 
   return (
     <article
@@ -86,50 +79,8 @@ export const Product = ({ blok }: { blok: ProductStoryblok }) => {
         </div>
       </div>
       <div>
-        {series?.map((serie) => (
-          <div key={serie._uid}>
-            <h2>{serie.title}</h2>
-            <div
-              dangerouslySetInnerHTML={{ __html: renderRichText(serie.text) }}
-              className="prose"
-            />
-            <div className="flex flex-wrap justify-center sm:justify-start gap-10 lg:gap-20 py-10">
-              {serie.images?.map((item, index) => (
-                <Dialog key={item._uid}>
-                  <DialogTrigger asChild>
-                    <a onClick={() => setActiveIndex(index)}>
-                      <img src={`${item.image?.filename}/m/135x203`} />
-                    </a>
-                  </DialogTrigger>
-                  <DialogContent className="!w-full h-full flex-col justify-center items-center border-none shadow-none">
-                    <Carousel
-                      opts={{
-                        loop: true,
-                        align: "center",
-                        containScroll: false,
-                        startIndex: activeIndex,
-                      }}
-                    >
-                      <CarouselContent className="">
-                        {serie.images?.map((item) => (
-                          <CarouselItem key={item._uid}>
-                            <div className="w-full h-full flex justify-center items-center">
-                              <img
-                                src={`${item.image?.filename}/m/`}
-                                className="w-full h-full object-contain"
-                              />
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious className="absolute top-1/2 left-0 text-slate-500" />
-                      <CarouselNext className="absolute top-1/2 right-0 text-slate-500" />
-                    </Carousel>
-                  </DialogContent>
-                </Dialog>
-              ))}
-            </div>
-          </div>
+        {series?.map((nestedBlok) => (
+          <StoryblokComponent key={nestedBlok._uid} blok={nestedBlok} />
         ))}
       </div>
     </article>

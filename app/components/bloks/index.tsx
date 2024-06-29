@@ -15,3 +15,5 @@ export * from "./HomeSlideShow";
 export * from "./Category";
 export * from "./Product";
 export * from "./AllProducts";
+export * from "./ImageFields";
+export * from "./ProductSerie";

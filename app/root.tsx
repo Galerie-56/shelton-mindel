@@ -29,6 +29,8 @@ import {
   Category,
   Product,
   AllProducts,
+  ImageFields,
+  ProductSerie,
 } from "./components/bloks";
 
 const isServer = typeof window === "undefined";
@@ -56,6 +58,8 @@ const components = {
   category: Category,
   product: Product,
   "all-products": AllProducts,
+  "image-fields": ImageFields,
+  "product-serie": ProductSerie,
 };
 
 storyblokInit({
