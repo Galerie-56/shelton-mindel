@@ -104,7 +104,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
                 <div>
                   <h4 className="text-[12px]">Awards</h4>
                   <div className="uppercase">
-                    {awards.map((award) => (
+                    {awards?.map((award) => (
                       <div className="mb-5" key={award._uid}>
                         {award.year} <br /> {award.title}
                       </div>
@@ -112,11 +112,11 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
                   </div>
                 </div>
               )}
-              {press.length > 0 && (
+              {press?.length > 0 && (
                 <div>
                   <h4 className="text-[12px]">Press</h4>
                   <div className="uppercase">
-                    {press.map((p) => (
+                    {press?.map((p) => (
                       <div className="mb-5" key={p._uid}>
                         {p.title}
                       </div>
@@ -161,17 +161,28 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
         </div>
       </div>
       <div className="mt-7">
-        {/* <SlideShow images={slideshow} /> */}
         <img
-          src={`${landscape_image?.filename}/m/1920x1080`}
+          src={`${landscape_image?.filename}/m/1220x0`}
           alt={landscape_image?.alt}
+          className="w-full" // Ensure the main image takes full width
         />
-        <div className="flex gap-5 mt-4 flex-wrap">
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 md:gap-4 gap-2  mt-4">
+          {" "}
+          {/* Changed to grid layout */}
           {slideshow?.map((image, index) => (
             <Dialog key={image._uid}>
               <DialogTrigger asChild>
-                <a onClick={() => setActiveIndex(index)}>
-                  <img src={`${image.filename}/m/135x135`} alt={image.alt} />
+                <a
+                  onClick={() => setActiveIndex(index)}
+                  className="block aspect-square cursor-pointer"
+                >
+                  {" "}
+                  {/* Added aspect-square for consistent height */}
+                  <img
+                    src={`${image.filename}/m/300x300`}
+                    alt={image.alt}
+                    className="w-full h-full object-cover hover:opacity-60 transition duration-300 " // Ensure image fills the container
+                  />
                 </a>
               </DialogTrigger>
               <DialogContent className="!w-full h-full flex-col justify-center items-center border-none shadow-none">
