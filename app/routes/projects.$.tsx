@@ -11,6 +11,19 @@ export const loader: LoaderFunction = async ({
   const resolveRelations = ["project.category"];
 
   const sbApi = getStoryblokApi();
+
+  // Fetch the UUID of the "on-the-board" category
+  const { data: categoryData } = await sbApi.get("cdn/stories", {
+    version: "draft",
+    starts_with: "categories/",
+    by_slugs: "categories/on-the-board",
+  });
+
+  console.log("categoryData", categoryData);
+
+  const onTheBoardUuid = categoryData.stories[0]?.uuid;
+  console.log("onTheBoardUuid", onTheBoardUuid);
+
   let { data }: { data: any } = await sbApi
     .get(`cdn/stories/projects/${slug}`, {
       version: "draft",
@@ -28,13 +41,17 @@ export const loader: LoaderFunction = async ({
     : Number(params.pageNumber);
   const perPage = await getPerPage(sbApi);
   const { data: projectsData } = await sbApi.get(`cdn/stories`, {
-    //all posts data for the Blog page
     version: "draft",
     starts_with: "projects/",
     per_page: perPage,
     page,
     is_startpage: false,
     resolve_relations: resolveRelations,
+    filter_query: {
+      categories: {
+        not_in: onTheBoardUuid,
+      },
+    },
   });
 
   const total = await getTotal("projects");
@@ -43,16 +60,22 @@ export const loader: LoaderFunction = async ({
   );
 
   // Find current project index
-  const currentIndex = projects.findIndex(p => p.id === data.story.id);
+  const currentIndex = projects.findIndex((p) => p.id === data.story.id);
 
   // Determine previous and next projects
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  const nextProject =
+    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
-
-
-  return json({ story: data?.story, total, projects, perPage, projectName: data?.story?.name, prevProject,
-    nextProject });
+  return json({
+    story: data?.story,
+    total,
+    projects,
+    perPage,
+    projectName: data?.story?.name,
+    prevProject,
+    nextProject,
+  });
 };
 
 const ProjectsPage = () => useStoryblokData("projects.$", ["project.category"]);

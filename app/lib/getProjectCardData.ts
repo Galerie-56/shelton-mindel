@@ -7,6 +7,8 @@ export function getProjectCardData(p: ProjectStoryblok) {
     image: p.content.portrait_image,
     category: p.content.category,
     project_code: p.content.project_code,
+    tags: p.tag_list,
+    uuid: p.uuid,
   };
 }
 
