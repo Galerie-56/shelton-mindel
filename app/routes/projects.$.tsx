@@ -19,10 +19,7 @@ export const loader: LoaderFunction = async ({
     by_slugs: "categories/on-the-board",
   });
 
-  console.log("categoryData", categoryData);
-
   const onTheBoardUuid = categoryData.stories[0]?.uuid;
-  console.log("onTheBoardUuid", onTheBoardUuid);
 
   let { data }: { data: any } = await sbApi
     .get(`cdn/stories/projects/${slug}`, {
@@ -48,7 +45,7 @@ export const loader: LoaderFunction = async ({
     is_startpage: false,
     resolve_relations: resolveRelations,
     filter_query: {
-      categories: {
+      category: {
         not_in: onTheBoardUuid,
       },
     },
