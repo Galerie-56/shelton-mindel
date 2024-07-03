@@ -8,7 +8,7 @@ export const ImageFields = ({ blok }) => {
       {...storyblokEditable(blok)}
       className="w-full h-full flex justify-center items-center"
     >
-      <img src={`${image?.filename}/m/135x203`} />
+      <img src={`${image?.filename}/m/180x0`} />
     </div>
   );
 };

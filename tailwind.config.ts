@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: "Neue Haas Unica, sans-serif",
+      },
       colors: {
         typography: {
           DEFAULT: {
