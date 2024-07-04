@@ -12,7 +12,7 @@ export const HomeSlideShow = ({ blok }: { blok: SlideshowStoryblok }) => {
           images={images}
           location="home"
           className="h-[300px] md:h-[500px] lg:h-[763px]"
-          size="1220x0"
+          size="0x763"
         />
       </Link>
     </div>
