@@ -6,11 +6,11 @@ import {
   ScrollRestoration,
   useLoaderData,
   json,
-} from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
-import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
-import styles from "./styles/global.css?url";
-import { GlobalLayout } from "./components/layout";
+} from '@remix-run/react';
+import type { LinksFunction } from '@remix-run/node';
+import { storyblokInit, apiPlugin, getStoryblokApi } from '@storyblok/react';
+import styles from './styles/global.css?url';
+import { GlobalLayout } from './components/layout';
 import {
   NavItem,
   Content,
@@ -31,9 +31,12 @@ import {
   AllProducts,
   ImageFields,
   ProductSerie,
-} from "./components/bloks";
+  ImageFull,
+  Career,
+  CareersList,
+} from './components/bloks';
 
-const isServer = typeof window === "undefined";
+const isServer = typeof window === 'undefined';
 
 const accessToken = isServer
   ? process.env.STORYBLOK_PREVIEW_TOKEN
@@ -41,25 +44,28 @@ const accessToken = isServer
     window.env.STORYBLOK_PREVIEW_TOKEN;
 
 const components = {
-  "nav-item": NavItem,
+  'nav-item': NavItem,
   content: Content,
   page: Page,
   profile: Profile,
   profiles: Profiles,
   awards: Awards,
   award: Award,
-  "architect-eyes": ArchitectEyes,
-  "architect-eye": ArchitectEye,
+  'architect-eyes': ArchitectEyes,
+  'architect-eye': ArchitectEye,
   publications: Publications,
   publication: Publication,
-  "all-projects": AllProjects,
+  'all-projects': AllProjects,
   project: Project,
   slideshow: HomeSlideShow,
   category: Category,
   product: Product,
-  "all-products": AllProducts,
-  "image-fields": ImageFields,
-  "product-serie": ProductSerie,
+  'all-products': AllProducts,
+  'image-fields': ImageFields,
+  'product-serie': ProductSerie,
+  'image-full': ImageFull,
+  career: Career,
+  'careers-list': CareersList,
 };
 
 storyblokInit({
@@ -70,27 +76,27 @@ storyblokInit({
 
 export const links: LinksFunction = () => [
   {
-    rel: "preload",
-    href: "/assets/fonts/NeueHaasUnica-Regular.woff2",
-    as: "font",
-    type: "font/woff2",
-    crossorigin: "anonymous",
+    rel: 'preload',
+    href: '/assets/fonts/NeueHaasUnica-Regular.woff2',
+    as: 'font',
+    type: 'font/woff2',
+    crossorigin: 'anonymous',
   },
   {
-    rel: "preload",
-    href: "/assets/fonts/NeueHaasUnica-Regular.woff",
-    as: "font",
-    type: "font/woff",
-    crossorigin: "anonymous",
+    rel: 'preload',
+    href: '/assets/fonts/NeueHaasUnica-Regular.woff',
+    as: 'font',
+    type: 'font/woff',
+    crossorigin: 'anonymous',
   },
-  { rel: "stylesheet", href: styles },
+  { rel: 'stylesheet', href: styles },
 ];
 
 export const loader = async () => {
   const sbApi = getStoryblokApi();
   const { data: config } = await sbApi.get(`cdn/stories/config`, {
-    version: "draft",
-    resolve_links: "url",
+    version: 'draft',
+    resolve_links: 'url',
   });
 
   const {

@@ -2,8 +2,8 @@ import {
   isRouteErrorResponse,
   useParams,
   useRouteError,
-} from "@remix-run/react";
-import { type ErrorResponse } from "@remix-run/react";
+} from '@remix-run/react';
+import { type ErrorResponse } from '@remix-run/react';
 
 type StatusHandler = (info: {
   error: ErrorResponse;
@@ -14,17 +14,17 @@ type StatusHandler = (info: {
  * Does its best to get a string error message from an unknown error.
  */
 export function getErrorMessage(error: unknown) {
-  if (typeof error === "string") return error;
+  if (typeof error === 'string') return error;
   if (
     error &&
-    typeof error === "object" &&
-    "message" in error &&
-    typeof error.message === "string"
+    typeof error === 'object' &&
+    'message' in error &&
+    typeof error.message === 'string'
   ) {
     return error.message;
   }
-  console.error("Unable to get error message for error", error);
-  return "Unknown Error";
+  console.error('Unable to get error message for error', error);
+  return 'Unknown Error';
 }
 
 export function GeneralErrorBoundary({
@@ -43,7 +43,7 @@ export function GeneralErrorBoundary({
   const error = useRouteError();
   const params = useParams();
 
-  if (typeof document !== "undefined") {
+  if (typeof document !== 'undefined') {
     console.error(error);
   }
 

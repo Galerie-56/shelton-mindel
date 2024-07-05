@@ -101,10 +101,18 @@ export interface RichtextStoryblok {
 }
 
 export interface CareerStoryblok {
-  title?: string;
   content?: RichtextStoryblok;
+  category?: string;
+  active?: boolean;
   _uid: string;
   component: "career";
+  [k: string]: any;
+}
+
+export interface CareersListStoryblok {
+  not_hiring?: string;
+  _uid: string;
+  component: "careers-list";
   [k: string]: any;
 }
 
@@ -121,8 +129,8 @@ export interface ConfigStoryblok {
   address_3?: string;
   phone?: string;
   mail?: string;
+  linkedin?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   facebook?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  twitter?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   instagram?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   pinterest?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   footer_text?: string;
@@ -153,10 +161,18 @@ export interface ContentStoryblok {
 }
 
 export interface ImageFieldsStoryblok {
+  name?: string;
   image?: AssetStoryblok;
   link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   _uid: string;
   component: "image-fields";
+  [k: string]: any;
+}
+
+export interface ImageFullStoryblok {
+  image?: AssetStoryblok;
+  _uid: string;
+  component: "image-full";
   [k: string]: any;
 }
 
@@ -180,11 +196,13 @@ export interface PageStoryblok {
     | AwardStoryblok
     | AwardsStoryblok
     | CareerStoryblok
+    | CareersListStoryblok
     | CategoryStoryblok
     | ConfigStoryblok
     | ContactStoryblok
     | ContentStoryblok
     | ImageFieldsStoryblok
+    | ImageFullStoryblok
     | NavItemStoryblok
     | PageStoryblok
     | PeriodicalStoryblok
@@ -276,15 +294,16 @@ export type MultiassetStoryblok = {
 export interface ProjectStoryblok {
   brief?: RichtextStoryblok;
   solution?: RichtextStoryblok;
+  portrait_image?: AssetStoryblok;
+  landscape_image?: AssetStoryblok;
+  category?: StoryblokStory<CategoryStoryblok> | StoryblokStory<CategoryStoryblok> | string;
   slideshow?: MultiassetStoryblok;
   project_code?: string;
   awards?: AwardStoryblok[];
   press?: PublicationStoryblok[];
   architect?: string;
   seo?: SeoStoryblok[];
-  pictures?: MultiassetStoryblok;
   photographer?: string;
-  category?: StoryblokStory<CategoryStoryblok> | StoryblokStory<CategoryStoryblok> | string;
   _uid: string;
   component: "project";
   [k: string]: any;

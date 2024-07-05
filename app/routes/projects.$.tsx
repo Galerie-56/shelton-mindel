@@ -1,36 +1,36 @@
-import { LoaderFunction, LoaderFunctionArgs, json } from "@remix-run/node";
-import { getStoryblokApi } from "@storyblok/react";
-import { getPerPage, getProjectCardData, getTotal } from "~/lib";
-import { useStoryblokData } from "~/lib";
-import { ProjectStoryblok } from "~/types";
+import { LoaderFunction, LoaderFunctionArgs, json } from '@remix-run/node';
+import { getStoryblokApi } from '@storyblok/react';
+import { getPerPage, getProjectCardData, getTotal } from '~/lib';
+import { useStoryblokData } from '~/lib';
+import type { ProjectStoryblok } from '~/types';
 
 export const loader: LoaderFunction = async ({
   params,
 }: LoaderFunctionArgs) => {
-  let slug = params["*"] ?? "home";
-  const resolveRelations = ["project.category"];
+  let slug = params['*'] ?? 'home';
+  const resolveRelations = ['project.category'];
 
   const sbApi = getStoryblokApi();
 
   // Fetch the UUID of the "on-the-board" category
-  const { data: categoryData } = await sbApi.get("cdn/stories", {
-    version: "draft",
-    starts_with: "categories/",
-    by_slugs: "categories/on-the-board",
+  const { data: categoryData } = await sbApi.get('cdn/stories', {
+    version: 'draft',
+    starts_with: 'categories/',
+    by_slugs: 'categories/on-the-board',
   });
 
   const onTheBoardUuid = categoryData.stories[0]?.uuid;
 
   let { data }: { data: any } = await sbApi
     .get(`cdn/stories/projects/${slug}`, {
-      version: "draft",
+      version: 'draft',
     })
     .catch((e) => {
       return { data: null };
     });
 
   if (!data) {
-    throw new Response("Not Found", { status: 404 });
+    throw new Response('Not Found', { status: 404 });
   }
 
   const page = Number.isNaN(Number(params.pageNumber))
@@ -38,8 +38,8 @@ export const loader: LoaderFunction = async ({
     : Number(params.pageNumber);
   const perPage = await getPerPage(sbApi);
   const { data: projectsData } = await sbApi.get(`cdn/stories`, {
-    version: "draft",
-    starts_with: "projects/",
+    version: 'draft',
+    starts_with: 'projects/',
     per_page: perPage,
     page,
     is_startpage: false,
@@ -51,7 +51,16 @@ export const loader: LoaderFunction = async ({
     },
   });
 
-  const total = await getTotal("projects");
+  // console.log('projectsData', projectsData);
+
+  const { data: careers } = await sbApi.get('cdn/stories', {
+    version: 'published',
+    starts_with: 'careers/',
+    is_startpage: false,
+  });
+  console.log('careers', careers);
+
+  const total = await getTotal('projects');
   const projects = projectsData.stories.map((p: ProjectStoryblok) =>
     getProjectCardData(p)
   );
@@ -75,6 +84,6 @@ export const loader: LoaderFunction = async ({
   });
 };
 
-const ProjectsPage = () => useStoryblokData("projects.$", ["project.category"]);
+const ProjectsPage = () => useStoryblokData('projects.$', ['project.category']);
 
 export default ProjectsPage;

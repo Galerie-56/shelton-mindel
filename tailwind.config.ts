@@ -27,6 +27,12 @@ const config = {
           DEFAULT: {
             css: {
               maxWidth: "100%", // add required value here
+              li: {
+                listStyle: "disc",
+                p: {
+                  margin: "none !important",
+                },
+              },
             },
           },
         },
@@ -75,6 +81,36 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "100%",
+            ul: {
+              listStyleType: "none",
+              // padding: 0,
+              margin: 0,
+            },
+            "ul > li": {
+              position: "relative",
+              paddingLeft: "1.5em",
+              marginBottom: "0.5em",
+            },
+            "ul > li::before": {
+              content: '""',
+              position: "absolute",
+              left: 0,
+              top: "0.6em",
+              width: "0.3em",
+              height: "0.3em",
+              backgroundColor: "currentColor",
+              borderRadius: "50%",
+            },
+            "ul > li > p": {
+              margin: 0,
+            },
+          },
+        },
       },
     },
   },

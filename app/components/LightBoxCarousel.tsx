@@ -1,20 +1,19 @@
-import { ArrowRight } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "~/components/ui/carousel";
+} from '~/components/ui/carousel';
 
 export const LightboxCarousel = ({
   images,
   startIndex,
-  location = "product",
+  location = 'product',
 }) => {
   const [activeIndex, setActiveIndex] = useState(startIndex);
-  console.log("images", images);
 
   useEffect(() => {
     setActiveIndex(startIndex);
@@ -24,7 +23,7 @@ export const LightboxCarousel = ({
     <Carousel
       opts={{
         loop: true,
-        align: "center",
+        align: 'center',
         containScroll: false,
         startIndex: activeIndex,
       }}
@@ -36,7 +35,7 @@ export const LightboxCarousel = ({
               <div className="flex justify-center items-center h-full">
                 <img
                   src={`${
-                    location === "product"
+                    location === 'product'
                       ? item?.image?.filename
                       : item?.filename
                   }/m/1000x0`}
