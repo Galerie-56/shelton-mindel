@@ -1,7 +1,12 @@
 import { LoaderFunction, LoaderFunctionArgs, json } from '@remix-run/node';
-import { getStoryblokApi } from '@storyblok/react';
+import { useLoaderData } from '@remix-run/react';
+import {
+  StoryblokComponent,
+  getStoryblokApi,
+  useStoryblokState,
+} from '@storyblok/react';
 import { getPerPage, getProjectCardData, getTotal } from '~/lib';
-import { useStoryblokData } from '~/lib';
+
 import type { ProjectStoryblok } from '~/types';
 
 export const loader: LoaderFunction = async ({
@@ -51,14 +56,11 @@ export const loader: LoaderFunction = async ({
     },
   });
 
-  // console.log('projectsData', projectsData);
-
   const { data: careers } = await sbApi.get('cdn/stories', {
     version: 'published',
     starts_with: 'careers/',
     is_startpage: false,
   });
-  console.log('careers', careers);
 
   const total = await getTotal('projects');
   const projects = projectsData.stories.map((p: ProjectStoryblok) =>
@@ -84,6 +86,10 @@ export const loader: LoaderFunction = async ({
   });
 };
 
-const ProjectsPage = () => useStoryblokData('projects.$', ['project.category']);
+const ProjectsPage = () => {
+  let { story } = useLoaderData<typeof loader>();
+  story = useStoryblokState(story, { resolveRelations: ['project.category'] });
+  return <StoryblokComponent blok={story?.content} />;
+};
 
 export default ProjectsPage;

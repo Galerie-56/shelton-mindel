@@ -1,29 +1,33 @@
-import { GeneralErrorBoundary } from "~/components/GeneralErrorBoundary";
-import { NotFoundPage } from "~/components/NotFoundPage";
+import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+import { NotFoundPage } from '~/components/NotFoundPage';
 import {
   json,
   type HeadersFunction,
   type LoaderFunctionArgs,
-} from "@remix-run/node";
-import { getStoryblokApi } from "@storyblok/react";
-import type { ProjectStoryblok } from "~/types";
+} from '@remix-run/node';
+import {
+  StoryblokComponent,
+  getStoryblokApi,
+  useStoryblokState,
+} from '@storyblok/react';
+import type { ProjectStoryblok } from '~/types';
 import {
   getPerPage,
   getProjectCardData,
   getTotal,
   invariantResponse,
   cacheControl,
-  useStoryblokData,
-} from "~/lib";
+} from '~/lib';
+import { useLoaderData } from '@remix-run/react';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const slug = params["*"] ?? "home";
+  const slug = params['*'] ?? 'home';
   const sbApi = getStoryblokApi();
-  const resolveRelations = ["project.category"];
+  const resolveRelations = ['project.category'];
 
   const { data } = await sbApi
     .get(`cdn/stories/categories/${slug}`, {
-      version: "draft",
+      version: 'draft',
     })
     .catch((e) => {
       //   console.log("e", e);
@@ -35,8 +39,6 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 
   const story = data?.story;
 
-  //   const seo = story?.content?.seo[0];
-
   const page = Number.isNaN(Number(params.pageNumber))
     ? 1
     : Number(params.pageNumber);
@@ -45,8 +47,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { uuid } = story;
 
   const { data: postsByContentType } = await sbApi.get(`cdn/stories/`, {
-    version: "draft",
-    starts_with: "projects/",
+    version: 'draft',
+    starts_with: 'projects/',
     is_startpage: false,
     per_page: perPage,
     page,
@@ -54,7 +56,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     search_term: uuid,
   });
 
-  const total = await getTotal(uuid,"projects");
+  const total = await getTotal(uuid, 'projects');
 
   const headers = {
     ...cacheControl,
@@ -78,11 +80,14 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 };
 
 export const headers: HeadersFunction = ({ loaderHeaders }) => {
-  return { "Cache-Control": loaderHeaders.get("Cache-Control") };
+  return { 'Cache-Control': loaderHeaders.get('Cache-Control') };
 };
 
-const CategoryPage = () =>
-  useStoryblokData("categories.$", ["project.category"]);
+const CategoryPage = () => {
+  let { story } = useLoaderData<typeof loader>();
+  story = useStoryblokState(story, { resolveRelations: ['project.category'] });
+  return <StoryblokComponent blok={story?.content} />;
+};
 
 export default CategoryPage;
 
