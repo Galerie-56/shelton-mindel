@@ -7,6 +7,7 @@ import {
 } from '@storyblok/react';
 import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
 import { NotFoundPage } from '~/components/NotFoundPage';
+import { isPreview } from '~/lib';
 
 export const loader: LoaderFunction = async ({
   params,
@@ -14,10 +15,16 @@ export const loader: LoaderFunction = async ({
   const sbApi = getStoryblokApi();
   let slug = params['*'] ?? 'home';
 
+  const version = isPreview() ? 'draft' : 'published';
+
   let { data }: { data: any } = await sbApi
-    .get(`cdn/stories/careers/${slug}`, {
-      version: 'draft',
-    })
+    .get(
+      `cdn/stories/careers/${slug}`,
+      {
+        version: version as 'published' | 'draft',
+      },
+      { cache: 'no-store' }
+    )
     .catch((e) => {
       return { data: null };
     });

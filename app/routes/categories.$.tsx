@@ -20,16 +20,22 @@ import {
 } from '~/lib';
 import { useLoaderData } from '@remix-run/react';
 import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+import { isPreview } from '~/lib';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const slug = params['*'] ?? 'home';
   const sbApi = getStoryblokApi();
   const resolveRelations = ['project.category'];
+  const version = isPreview() ? 'draft' : 'published';
 
   const { data } = await sbApi
-    .get(`cdn/stories/categories/${slug}`, {
-      version: 'draft',
-    })
+    .get(
+      `cdn/stories/categories/${slug}`,
+      {
+        version: version as 'published' | 'draft',
+      },
+      { cache: 'no-store' }
+    )
     .catch((e) => {
       //   console.log("e", e);
       return { data: null };
@@ -47,15 +53,19 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const perPage = await getPerPage(sbApi);
   const { uuid } = story;
 
-  const { data: postsByContentType } = await sbApi.get(`cdn/stories/`, {
-    version: 'draft',
-    starts_with: 'projects/',
-    is_startpage: false,
-    per_page: perPage,
-    page,
-    resolve_relations: resolveRelations,
-    search_term: uuid,
-  });
+  const { data: postsByContentType } = await sbApi.get(
+    `cdn/stories/`,
+    {
+      version: version as 'published' | 'draft',
+      starts_with: 'projects/',
+      is_startpage: false,
+      per_page: perPage,
+      page,
+      resolve_relations: resolveRelations,
+      search_term: uuid,
+    },
+    { cache: 'no-store' }
+  );
 
   const total = await getTotal(uuid, 'projects');
 

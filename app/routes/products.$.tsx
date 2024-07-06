@@ -9,17 +9,23 @@ import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
 import { NotFoundPage } from '~/components/NotFoundPage';
 import { getPerPage, getProductCardData, getTotal } from '~/lib';
 import { ProductStoryblok } from '~/types';
+import { isPreview } from '~/lib';
 
 export const loader: LoaderFunction = async ({
   params,
 }: LoaderFunctionArgs) => {
   let slug = params['*'] ?? 'home';
+  const version = isPreview() ? 'draft' : 'published';
 
   const sbApi = getStoryblokApi();
   let { data }: { data: any } = await sbApi
-    .get(`cdn/stories/products/${slug}`, {
-      version: 'draft',
-    })
+    .get(
+      `cdn/stories/products/${slug}`,
+      {
+        version: version as 'published' | 'draft',
+      },
+      { cache: 'no-store' }
+    )
     .catch((e) => {
       return { data: null };
     });
@@ -32,14 +38,18 @@ export const loader: LoaderFunction = async ({
     ? 1
     : Number(params.pageNumber);
   const perPage = await getPerPage(sbApi);
-  const { data: productsData } = await sbApi.get(`cdn/stories`, {
-    //all posts data for the Blog page
-    version: 'draft',
-    starts_with: 'products/',
-    per_page: perPage,
-    page,
-    is_startpage: false,
-  });
+  const { data: productsData } = await sbApi.get(
+    `cdn/stories`,
+    {
+      //all posts data for the Blog page
+      version: version as 'published' | 'draft',
+      starts_with: 'products/',
+      per_page: perPage,
+      page,
+      is_startpage: false,
+    },
+    { cache: 'no-store' }
+  );
 
   const total = await getTotal('products');
   const products = productsData.stories.map((p: ProductStoryblok) =>

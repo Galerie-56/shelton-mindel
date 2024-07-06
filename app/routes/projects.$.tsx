@@ -7,7 +7,7 @@ import {
 } from '@storyblok/react';
 import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
 import { NotFoundPage } from '~/components/NotFoundPage';
-import { getPerPage, getProjectCardData, getTotal } from '~/lib';
+import { getPerPage, getProjectCardData, getTotal, isPreview } from '~/lib';
 
 import type { ProjectStoryblok } from '~/types';
 
@@ -16,22 +16,31 @@ export const loader: LoaderFunction = async ({
 }: LoaderFunctionArgs) => {
   let slug = params['*'] ?? 'home';
   const resolveRelations = ['project.category'];
+  let version = isPreview() ? 'draft' : 'published';
 
   const sbApi = getStoryblokApi();
 
   // Fetch the UUID of the "on-the-board" category
-  const { data: categoryData } = await sbApi.get('cdn/stories', {
-    version: 'draft',
-    starts_with: 'categories/',
-    by_slugs: 'categories/on-the-board',
-  });
+  const { data: categoryData } = await sbApi.get(
+    'cdn/stories',
+    {
+      version: version as 'published' | 'draft',
+      starts_with: 'categories/',
+      by_slugs: 'categories/on-the-board',
+    },
+    { cache: 'no-store' }
+  );
 
   const onTheBoardUuid = categoryData.stories[0]?.uuid;
 
   let { data }: { data: any } = await sbApi
-    .get(`cdn/stories/projects/${slug}`, {
-      version: 'draft',
-    })
+    .get(
+      `cdn/stories/projects/${slug}`,
+      {
+        version: version as 'published' | 'draft',
+      },
+      { cache: 'no-store' }
+    )
     .catch((e) => {
       return { data: null };
     });
@@ -44,19 +53,23 @@ export const loader: LoaderFunction = async ({
     ? 1
     : Number(params.pageNumber);
   const perPage = await getPerPage(sbApi);
-  const { data: projectsData } = await sbApi.get(`cdn/stories`, {
-    version: 'draft',
-    starts_with: 'projects/',
-    per_page: perPage,
-    page,
-    is_startpage: false,
-    resolve_relations: resolveRelations,
-    filter_query: {
-      category: {
-        not_in: onTheBoardUuid,
+  const { data: projectsData } = await sbApi.get(
+    `cdn/stories`,
+    {
+      version: version as 'published' | 'draft',
+      starts_with: 'projects/',
+      per_page: perPage,
+      page,
+      is_startpage: false,
+      resolve_relations: resolveRelations,
+      filter_query: {
+        category: {
+          not_in: onTheBoardUuid,
+        },
       },
     },
-  });
+    { cache: 'no-store' }
+  );
 
   const total = await getTotal('projects');
   const projects = projectsData.stories.map((p: ProjectStoryblok) =>

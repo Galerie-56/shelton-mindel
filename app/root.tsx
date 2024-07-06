@@ -35,6 +35,7 @@ import {
   Career,
   CareersList,
 } from './components/bloks';
+import { isPreview } from './lib';
 
 const isServer = typeof window === 'undefined';
 
@@ -72,6 +73,7 @@ storyblokInit({
   accessToken,
   use: [apiPlugin],
   components,
+  bridge: isPreview(),
 });
 
 export const links: LinksFunction = () => [
@@ -117,6 +119,7 @@ export const loader = async () => {
   return json({
     env: {
       STORYBLOK_PREVIEW_TOKEN: process.env.STORYBLOK_PREVIEW_TOKEN,
+      STORYBLOK_IS_PREVIEW: process.env.STORYBLOK_IS_PREVIEW,
     },
     logo,
     headerNav: header_nav,
