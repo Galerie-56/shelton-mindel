@@ -80,14 +80,14 @@ export const links: LinksFunction = () => [
     href: '/assets/fonts/NeueHaasUnica-Regular.woff2',
     as: 'font',
     type: 'font/woff2',
-    crossorigin: 'anonymous',
+    crossOrigin: 'anonymous',
   },
   {
     rel: 'preload',
     href: '/assets/fonts/NeueHaasUnica-Regular.woff',
     as: 'font',
     type: 'font/woff',
-    crossorigin: 'anonymous',
+    crossOrigin: 'anonymous',
   },
   { rel: 'stylesheet', href: styles },
 ];

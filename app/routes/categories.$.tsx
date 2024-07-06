@@ -1,4 +1,4 @@
-import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+// import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
 import { NotFoundPage } from '~/components/NotFoundPage';
 import {
   json,
@@ -91,12 +91,12 @@ const CategoryPage = () => {
 
 export default CategoryPage;
 
-export function ErrorBoundary() {
-  return (
-    <GeneralErrorBoundary
-      statusHandlers={{
-        404: () => <NotFoundPage />,
-      }}
-    />
-  );
-}
+// export function ErrorBoundary() {
+//   return (
+//     <GeneralErrorBoundary
+//       statusHandlers={{
+//         404: () => <NotFoundPage />,
+//       }}
+//     />
+//   );
+// }
