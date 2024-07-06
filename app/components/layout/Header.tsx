@@ -1,7 +1,7 @@
-import { Link, useLoaderData } from "@remix-run/react";
-import type { loader } from "~/root";
-import { MainMenu } from "./MainMenu";
-import { SlideMenu } from "./SlideMenu";
+import { Link, useLoaderData } from '@remix-run/react';
+import type { loader } from '~/root';
+import { MainMenu } from './MainMenu';
+import { SlideMenu } from './SlideMenu';
 
 export const Header = () => {
   const { logo } = useLoaderData<typeof loader>();

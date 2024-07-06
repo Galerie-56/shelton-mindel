@@ -5,6 +5,8 @@ import {
   getStoryblokApi,
   useStoryblokState,
 } from '@storyblok/react';
+import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+import { NotFoundPage } from '~/components/NotFoundPage';
 import { getPerPage, getProjectCardData, getTotal } from '~/lib';
 
 import type { ProjectStoryblok } from '~/types';
@@ -56,12 +58,6 @@ export const loader: LoaderFunction = async ({
     },
   });
 
-  const { data: careers } = await sbApi.get('cdn/stories', {
-    version: 'published',
-    starts_with: 'careers/',
-    is_startpage: false,
-  });
-
   const total = await getTotal('projects');
   const projects = projectsData.stories.map((p: ProjectStoryblok) =>
     getProjectCardData(p)
@@ -93,3 +89,13 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
+
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: () => <NotFoundPage />,
+      }}
+    />
+  );
+}

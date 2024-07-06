@@ -1,10 +1,18 @@
-import { LoaderFunction, LoaderFunctionArgs, json } from '@remix-run/node';
+import {
+  LoaderFunction,
+  LoaderFunctionArgs,
+  json,
+  redirect,
+} from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import {
   getStoryblokApi,
   useStoryblokState,
   StoryblokComponent,
 } from '@storyblok/react';
+import { Divide } from 'lucide-react';
+import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+import { NotFoundPage } from '~/components/NotFoundPage';
 
 export const loader: LoaderFunction = async ({
   params,
@@ -37,4 +45,14 @@ export default function Page() {
   let { story } = useLoaderData<typeof loader>();
   story = useStoryblokState(story);
   return <StoryblokComponent blok={story?.content} />;
+}
+
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: () => <NotFoundPage />,
+      }}
+    />
+  );
 }

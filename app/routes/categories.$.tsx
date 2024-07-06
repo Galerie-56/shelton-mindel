@@ -19,6 +19,7 @@ import {
   cacheControl,
 } from '~/lib';
 import { useLoaderData } from '@remix-run/react';
+import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const slug = params['*'] ?? 'home';
@@ -91,12 +92,12 @@ const CategoryPage = () => {
 
 export default CategoryPage;
 
-// export function ErrorBoundary() {
-//   return (
-//     <GeneralErrorBoundary
-//       statusHandlers={{
-//         404: () => <NotFoundPage />,
-//       }}
-//     />
-//   );
-// }
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: () => <NotFoundPage />,
+      }}
+    />
+  );
+}

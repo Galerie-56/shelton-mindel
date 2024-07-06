@@ -1,10 +1,12 @@
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
-import { useLoaderData } from "@remix-run/react";
-import type { NavItemStoryblok } from "~/types";
-import { type loader } from "~/root";
+import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
+import { useLoaderData } from '@remix-run/react';
+import type { NavItemStoryblok } from '~/types';
+import { type loader } from '~/root';
 
 export const MainMenu = () => {
   let { headerNav: nav } = useLoaderData<typeof loader>();
+
+  // if (!nav || !nav.menu_items) return null;
 
   return (
     <nav
@@ -12,11 +14,11 @@ export const MainMenu = () => {
       aria-label="main"
       {...storyblokEditable(nav)}
     >
-      <ul role="menu" className="flex">
+      <nav role="menu" className="flex">
         {nav.map((nestedBlok: NavItemStoryblok) => (
           <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
         ))}
-      </ul>
+      </nav>
     </nav>
   );
 };

@@ -5,6 +5,8 @@ import {
   getStoryblokApi,
   useStoryblokState,
 } from '@storyblok/react';
+import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+import { NotFoundPage } from '~/components/NotFoundPage';
 
 export const loader: LoaderFunction = async ({
   params,
@@ -36,3 +38,13 @@ const CareersPage = () => {
 };
 
 export default CareersPage;
+
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: () => <NotFoundPage />,
+      }}
+    />
+  );
+}

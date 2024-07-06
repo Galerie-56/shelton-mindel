@@ -5,6 +5,8 @@ import {
   getStoryblokApi,
   useStoryblokState,
 } from '@storyblok/react';
+import { GeneralErrorBoundary } from '~/components/GeneralErrorBoundary';
+import { NotFoundPage } from '~/components/NotFoundPage';
 import { getPerPage, getProductCardData, getTotal } from '~/lib';
 import { ProductStoryblok } from '~/types';
 
@@ -72,3 +74,13 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
+
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: () => <NotFoundPage />,
+      }}
+    />
+  );
+}

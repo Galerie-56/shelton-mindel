@@ -5,15 +5,15 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselApi,
-} from "~/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import Fade from "embla-carousel-fade";
-import { useState, useMemo, useEffect } from "react";
+} from '~/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import Fade from 'embla-carousel-fade';
+import { useState, useMemo, useEffect } from 'react';
 
 export const SlideShow = ({
   images,
-  size = "1920x1080",
-  location = "project",
+  size = '1920x1080',
+  location = 'project',
   ...props
 }) => {
   const [mainApi, setMainApi] = useState<CarouselApi>();
@@ -28,22 +28,19 @@ export const SlideShow = ({
         >
           <div
             className={`${
-              location !== "home"
-                ? "bg-white flex items-center justify-center"
-                : ""
+              location !== 'home'
+                ? 'bg-white flex items-center justify-center'
+                : ''
             }`}
             style={{
-              width: location !== "home" ? size.split("x")[0] + "px" : "auto",
-              height: location !== "home" ? size.split("x")[1] + "px" : "auto",
+              width: location !== 'home' ? size.split('x')[0] + 'px' : 'auto',
+              height: location !== 'home' ? size.split('x')[1] + 'px' : 'auto',
             }}
           >
             <img
-              src={`${image.filename}/m/${location === "home" ? size : ""}`}
+              src={`${image.filename}/m/${location === 'home' ? size : ''}`}
               alt={image.alt_text}
-              className=""
-              w-full
-              h-auto
-              object-cover
+              className="w-full h-auto object-cover"
             />
           </div>
         </CarouselItem>
@@ -58,7 +55,7 @@ export const SlideShow = ({
 
   useEffect(() => {
     if (mainApi) {
-      mainApi.on("select", (index) => {
+      mainApi.on('select', (index) => {
         setCurrent(index);
       });
     }
@@ -76,16 +73,16 @@ export const SlideShow = ({
         ]}
         opts={{
           loop: true,
-          align: "center",
+          align: 'center',
           containScroll: false,
         }}
       >
         <CarouselContent>{mainImage}</CarouselContent>
 
-        {location != "home" && (
+        {location != 'home' && (
           <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-500" />
         )}
-        {location != "home" && (
+        {location != 'home' && (
           <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500" />
         )}
       </Carousel>
