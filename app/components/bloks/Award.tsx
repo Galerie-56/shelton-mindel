@@ -1,8 +1,10 @@
-import { storyblokEditable } from "@storyblok/react";
-import type { AwardStoryblok } from "~/types";
+import { Link } from '@remix-run/react';
+import { storyblokEditable } from '@storyblok/react';
+import type { AwardStoryblok } from '~/types';
 
 export const Award = ({ blok }: AwardStoryblok) => {
-  const { _uid, title, year, link, thumbnail, description, description_link } = blok;
+  const { _uid, title, year, link, thumbnail, description, description_link } =
+    blok;
 
   return (
     <div
@@ -30,13 +32,9 @@ export const Award = ({ blok }: AwardStoryblok) => {
         </a>
       </div>
       <div className="w-full mt-2 tex-sm hover:text-black">
-        <a href={description_link?.cached_url} target="_blank" rel="noopener noreferrer">
-          {description}
-        </a>
+        <Link to={description_link?.cached_url}>{description}</Link>
       </div>
-      {year && (
-        <div className="text-sm mt-2 w-full">{year}</div>
-      )}
+      {year && <div className="text-sm mt-2 w-full">{year}</div>}
     </div>
   );
 };
