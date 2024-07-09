@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { getStoryblokApi } from "@storyblok/react";
-import { useMatches } from "@remix-run/react";
-import type { ProductStoryblok } from "~/types";
-import { getProductCardData } from "~/lib";
-import { ProductCard } from "./ProductCard";
+import { useState } from 'react';
+import { getStoryblokApi } from '@storyblok/react';
+import { useMatches } from '@remix-run/react';
+import type { ProductStoryblok } from '~/types';
+import { getProductCardData } from '~/lib';
+import { ProductCard } from './ProductCard';
 
 interface RouteData {
   total: number;
@@ -21,8 +21,6 @@ export const ProductsList = ({ uuid }: ProductsListType) => {
   const { total, products: firstsProducts } = matches[1].data as RouteData;
   const [products, setProducts] = useState(firstsProducts);
 
-  console.log("total", total);
-
   interface GlobalData {
     perPage: number;
   }
@@ -33,8 +31,8 @@ export const ProductsList = ({ uuid }: ProductsListType) => {
 
   const fetchProducts = async (page: number, uuid: string) => {
     const { data: products } = await sbApi.get(`cdn/stories`, {
-      version: "draft",
-      starts_with: "products/",
+      version: 'draft',
+      starts_with: 'products/',
       per_page: perPage,
       page,
       is_startpage: false,
@@ -54,7 +52,7 @@ export const ProductsList = ({ uuid }: ProductsListType) => {
   const loadMore = () => {
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
-    fetchProducts(nextPage, uuid || "");
+    fetchProducts(nextPage, uuid || '');
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

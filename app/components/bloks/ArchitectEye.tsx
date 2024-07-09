@@ -1,14 +1,13 @@
-import { storyblokEditable } from "@storyblok/react";
-import { Divide } from "lucide-react";
-import { ArchitectEyeStoryblok } from "~/types";
+import { storyblokEditable } from '@storyblok/react';
+import { ArchitectEyeStoryblok } from '~/types';
 
 export const ArchitectEye = ({ blok }: ArchitectEyeStoryblok) => {
   const { _uid, date, image, description, link, title } = blok;
 
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
   return (
     <div
@@ -22,7 +21,7 @@ export const ArchitectEye = ({ blok }: ArchitectEyeStoryblok) => {
         <div className="w-1/6" />
       )}
       <div className="mb-2 md:mb-0 md:w-1/6 md:mr-20">
-        <a href={link} target="_blank" rel="noopener noreferrer">
+        <a href={link.cached_url} target="_blank" rel="noopener noreferrer">
           <img
             src={`${image.filename}/m/166x0/`}
             alt={image.alt}
@@ -32,7 +31,7 @@ export const ArchitectEye = ({ blok }: ArchitectEyeStoryblok) => {
       </div>
       <div className="md:w-4/6">
         <a
-          href={link}
+          href={link.cached_url}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-black"

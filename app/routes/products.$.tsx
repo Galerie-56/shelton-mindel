@@ -41,7 +41,6 @@ export const loader: LoaderFunction = async ({
   const { data: productsData } = await sbApi.get(
     `cdn/stories`,
     {
-      //all posts data for the Blog page
       version: version as 'published' | 'draft',
       starts_with: 'products/',
       per_page: perPage,
@@ -51,7 +50,10 @@ export const loader: LoaderFunction = async ({
     { cache: 'no-store' }
   );
 
-  const total = await getTotal('products');
+  const response = await fetch(
+    `https://api.storyblok.com/v2/cdn/stories?token=${process.env.STORYBLOK_PREVIEW_TOKEN}&starts_with=products/&version=draft&is_startpage=false`
+  );
+  let total = await response?.headers.get('total');
   const products = productsData.stories.map((p: ProductStoryblok) =>
     getProductCardData(p)
   );
