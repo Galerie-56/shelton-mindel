@@ -1,5 +1,5 @@
-import { storyblokEditable, renderRichText } from "@storyblok/react";
-import type { ContentStoryblok } from "~/types";
+import { storyblokEditable, renderRichText } from '@storyblok/react';
+import type { ContentStoryblok } from '~/types';
 
 export const Content = ({ blok }: { blok: ContentStoryblok }) => {
   const { _uid, text, image } = blok;
@@ -11,7 +11,7 @@ export const Content = ({ blok }: { blok: ContentStoryblok }) => {
     >
       <div
         dangerouslySetInnerHTML={{ __html: renderRichText(text) }}
-        className=" prose md:w-1/2"
+        className=" prose md:w-1/2 text-primary"
       />
       <div>
         <img

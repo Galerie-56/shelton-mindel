@@ -2,10 +2,10 @@ import {
   storyblokEditable,
   StoryblokComponent,
   renderRichText,
-} from "@storyblok/react";
-import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
-import { LightboxCarousel } from "~/components/LightBoxCarousel";
-import React, { useState } from "react";
+} from '@storyblok/react';
+import { Dialog, DialogContent, DialogTrigger } from '~/components/ui/dialog';
+import { LightboxCarousel } from '~/components/LightBoxCarousel';
+import React, { useState } from 'react';
 
 export const ProductSerie = ({ blok }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -15,7 +15,7 @@ export const ProductSerie = ({ blok }) => {
       <h2>{blok.title}</h2>
       <div
         dangerouslySetInnerHTML={{ __html: renderRichText(blok.text) }}
-        className="prose"
+        className="prose text-primary"
       />
       <div className="flex flex-wrap justify-center sm:justify-start gap-10 lg:gap-20 py-10">
         {blok.images?.map((nestedBlok, index) => (

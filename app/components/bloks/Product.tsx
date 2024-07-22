@@ -1,16 +1,17 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from '@remix-run/react';
 import {
   storyblokEditable,
   renderRichText,
   StoryblokComponent,
-} from "@storyblok/react";
-import { ProductStoryblok } from "~/types";
-import { Link } from "@remix-run/react";
-import React from "react";
+} from '@storyblok/react';
+import { ProductStoryblok } from '~/types';
+import { Link } from '@remix-run/react';
+import React from 'react';
 
 export const Product = ({ blok }: { blok: ProductStoryblok }) => {
   const { productName, nextProduct, prevProduct } = useLoaderData();
   const { text, product_series: series, brochures } = blok;
+  console.log('blok', blok);
 
   return (
     <article
@@ -23,7 +24,7 @@ export const Product = ({ blok }: { blok: ProductStoryblok }) => {
         <div className="w-full md:w-1/2">
           <div
             dangerouslySetInnerHTML={{ __html: renderRichText(text) }}
-            className="prose"
+            className="prose mb-20 text-primary"
           />
         </div>
         <div className="w-1/2 uppercase ">

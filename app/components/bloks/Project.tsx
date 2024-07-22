@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from 'react';
 import {
   storyblokEditable,
   renderRichText,
   StoryblokComponent,
-} from "@storyblok/react";
-import { ProjectStoryblok } from "~/types";
-import { SlideShow } from "../SlideShow";
-import { Link } from "@remix-run/react";
-import { useLoaderData } from "@remix-run/react";
+} from '@storyblok/react';
+import { ProjectStoryblok } from '~/types';
+import { SlideShow } from '../SlideShow';
+import { Link } from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 // import { SocialShare } from "../SocialShare";
-import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
-import { LightboxCarousel } from "~/components/LightBoxCarousel";
+import { Dialog, DialogContent, DialogTrigger } from '~/components/ui/dialog';
+import { LightboxCarousel } from '~/components/LightBoxCarousel';
 
 export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
   const {
@@ -40,11 +40,11 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
     if (contentRef.current) {
       contentRef.current.style.maxHeight = isExpanded
         ? `${contentRef.current.scrollHeight}px`
-        : "10rem"; // Adjust this value to match the height of 5 lines
+        : '10rem'; // Adjust this value to match the height of 5 lines
     }
   }, [isExpanded]);
 
-  const url = typeof window !== "undefined" && window.location.href;
+  const url = typeof window !== 'undefined' && window.location.href;
 
   return (
     <article {...storyblokEditable(blok)} key={blok._uid} className="">
@@ -55,11 +55,11 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
             dangerouslySetInnerHTML={{
               __html: `Problem: ${renderRichText(brief)}`,
             }}
-            className="prose mb-5"
+            className="prose mb-5 text-primary"
           />
           <div
             className="relative overflow-hidden transition-max-height duration-500 ease-in-out"
-            style={{ maxHeight: isExpanded ? "none" : "10rem" }} // Adjust this value to match the height of 5 lines
+            style={{ maxHeight: isExpanded ? 'none' : '10rem' }} // Adjust this value to match the height of 5 lines
             ref={contentRef}
           >
             <div
@@ -73,7 +73,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
             onClick={toggleReadMore}
             className=" bg-transparent hover:bg-transparent capitalize my-5 text-primary p-0 font-bold"
           >
-            {isExpanded ? "Close" : "Read More"}
+            {isExpanded ? 'Close' : 'Read More'}
           </button>
           {/* <SocialShare url={url} /> */}
         </div>
@@ -167,7 +167,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
           className="w-full" // Ensure the main image takes full width
         />
         <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 md:gap-4 gap-2  mt-4">
-          {" "}
+          {' '}
           {/* Changed to grid layout */}
           {slideshow?.map((image, index) => (
             <Dialog key={image._uid}>
@@ -176,7 +176,7 @@ export const Project = ({ blok }: { blok: ProjectStoryblok }) => {
                   onClick={() => setActiveIndex(index)}
                   className="block aspect-square cursor-pointer"
                 >
-                  {" "}
+                  {' '}
                   {/* Added aspect-square for consistent height */}
                   <img
                     src={`${image.filename}/m/300x300`}
