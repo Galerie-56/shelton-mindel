@@ -62,11 +62,11 @@ export const loader: LoaderFunction = async ({
       page,
       is_startpage: false,
       resolve_relations: resolveRelations,
-      filter_query: {
-        category: {
-          not_in: onTheBoardUuid,
-        },
-      },
+      // filter_query: {
+      //   category: {
+      //     not_in: onTheBoardUuid,
+      //   },
+      // },
     },
     { cache: 'no-store' }
   );

@@ -49,11 +49,11 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
       is_startpage: false,
       resolve_relations: resolveRelations,
       search_term: uuid,
-      filter_query: {
-        categories: {
-          not_in: onTheBoardUuid,
-        },
-      },
+      // filter_query: {
+      //   categories: {
+      //     not_in: onTheBoardUuid,
+      //   },
+      // },
     });
 
     const nextProjects = projects.stories.map((p: ProjectStoryblok) =>
