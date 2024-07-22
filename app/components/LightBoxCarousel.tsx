@@ -38,7 +38,7 @@ export const LightboxCarousel = ({
                     location === 'product'
                       ? item?.image?.filename
                       : item?.filename
-                  }/m/1000x0`}
+                  }/m/1440x0`}
                   className="w-full h-auto max-h-full object-contain"
                 />
               </div>
