@@ -32,14 +32,14 @@ export const LightboxCarousel = ({
         {images.map((item) => (
           <CarouselItem key={item._uid}>
             <div className="flex flex-col justify-center items-center h-full">
-              <div className="flex justify-center items-center h-full">
+              <div className="flex justify-center items-center  py-10">
                 <img
                   src={`${
                     location === 'product'
                       ? item?.image?.filename
                       : item?.filename
                   }/m/0x1600`}
-                  className=""
+                  className="max-h-[750px] w-auto object-contain"
                 />
               </div>
               {item.name && (
