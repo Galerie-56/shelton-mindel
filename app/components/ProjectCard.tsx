@@ -1,16 +1,14 @@
-import { Link } from "@remix-run/react";
-import { ProjectStoryblok } from "~/types";
+import { Link } from '@remix-run/react';
+import { ProjectStoryblok } from '~/types';
 
 export const ProjectCard = ({ project }: { project: ProjectStoryblok }) => {
   const { headline, image, project_code, full_slug, category, name } = project;
-
-
 
   return (
     <div className="relative overflow-hidden">
       <Link to={`/${full_slug}`} className="block h-full">
         <img
-          src={`${image?.filename}/m/394x527`}
+          src={`${image?.filename}/m/788x1054`}
           alt={image?.alt_text}
           // className="object-cover w-full h-full"
         />
