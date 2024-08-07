@@ -31,7 +31,6 @@ export const LightboxCarousel = ({
     >
       <CarouselContent>
         {images.map((item) => {
-          console.log('item', item); // Log the item
           return (
             <CarouselItem key={item._uid}>
               <div className="flex flex-col justify-center items-center h-full">

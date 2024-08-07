@@ -11,17 +11,6 @@ export const Space = ({ blok }: { blok: SpaceStoryblok }) => {
   const { spaceName, prevSpace, nextSpace } = useLoaderData<typeof loader>();
   const [activeIndex, setActiveIndex] = useState(0);
   console.log('images', images);
-
-  //   const carouselImages = [
-  //     { image: landscape_image, link: null },
-  //     ...images?.map((item) => ({
-  //       image: item.image,
-  //       link: item.link,
-  //     })),
-  //   ];
-
-  //   console.log('carouselImages', carouselImages);
-
   return (
     <article {...storyblokEditable(blok)} key={blok._uid} className="">
       <h1>{spaceName}</h1>
