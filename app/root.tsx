@@ -36,6 +36,7 @@ import {
   CareersList,
   Slide,
   LinkSlideShow,
+  AllSpaces,
 } from './components/bloks';
 import { isPreview } from './lib';
 
@@ -71,6 +72,7 @@ const components = {
   'careers-list': CareersList,
   slide: Slide,
   'link-slideshow': LinkSlideShow,
+  'all-spaces': AllSpaces,
 };
 
 storyblokInit({

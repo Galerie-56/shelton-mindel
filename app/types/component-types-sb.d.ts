@@ -12,6 +12,12 @@ export interface AllProjectsStoryblok {
   [k: string]: any;
 }
 
+export interface AllSpacesStoryblok {
+  _uid: string;
+  component: "all-spaces";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -198,6 +204,7 @@ export interface PageStoryblok {
   body?: (
     | AllProductsStoryblok
     | AllProjectsStoryblok
+    | AllSpacesStoryblok
     | ArchitectEyeStoryblok
     | ArchitectEyesStoryblok
     | AwardStoryblok
@@ -367,8 +374,7 @@ export interface SlideshowStoryblok {
 }
 
 export interface SpaceStoryblok {
-  headline?: string;
-  subtitle?: string;
+  landscape_image?: AssetStoryblok;
   images?: ImageFieldsStoryblok[];
   _uid: string;
   component: "space";

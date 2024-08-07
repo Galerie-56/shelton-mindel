@@ -12,7 +12,7 @@ export const Profile = ({ blok }: ProfileStoryblok) => {
     >
       <div className="mb-2 md:mb-0 md:w-1/3">
         <img
-          src={`${photo.filename}/m/197x197/filters:quality(80)`}
+          src={`${photo.filename}/m/400x400/filters:quality(80)`}
           alt={photo.alt}
           className="w-full h-auto"
         />

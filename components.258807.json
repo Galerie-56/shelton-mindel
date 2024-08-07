@@ -46,6 +46,28 @@
       "content_type_asset_preview": null
     },
     {
+      "name": "all-spaces",
+      "display_name": null,
+      "created_at": "2024-08-07T08:38:28.719Z",
+      "updated_at": "2024-08-07T08:38:28.719Z",
+      "id": 6138338,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "all-spaces",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
       "name": "architect-eye",
       "display_name": null,
       "created_at": "2023-10-25T12:12:31.111Z",
@@ -1246,14 +1268,12 @@
       "name": "space",
       "display_name": null,
       "created_at": "2023-10-24T16:14:01.627Z",
-      "updated_at": "2023-10-24T16:28:31.753Z",
+      "updated_at": "2024-08-07T08:40:27.729Z",
       "id": 4778322,
       "schema": {
-        "headline": {
-          "type": "text"
-        },
-        "subtitle": {
-          "type": "text"
+        "landscape_image": {
+          "type": "asset",
+          "pos": 0
         },
         "images": {
           "type": "bloks",
@@ -1261,7 +1281,8 @@
           "restrict_components": true,
           "component_whitelist": [
             "image-fields"
-          ]
+          ],
+          "pos": 1
         }
       },
       "image": null,
