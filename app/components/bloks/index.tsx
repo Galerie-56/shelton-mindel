@@ -23,3 +23,4 @@ export * from './CareersList';
 export * from './Slide';
 export * from './LinkSlideshow';
 export * from './AllSpaces';
+export * from './Space';

@@ -37,6 +37,7 @@ import {
   Slide,
   LinkSlideShow,
   AllSpaces,
+  Space,
 } from './components/bloks';
 import { isPreview } from './lib';
 
@@ -73,6 +74,7 @@ const components = {
   slide: Slide,
   'link-slideshow': LinkSlideShow,
   'all-spaces': AllSpaces,
+  space: Space,
 };
 
 storyblokInit({
