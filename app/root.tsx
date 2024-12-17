@@ -7,7 +7,7 @@ import {
   useLoaderData,
   json,
 } from '@remix-run/react';
-import type { LinksFunction } from '@remix-run/node';
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import { storyblokInit, apiPlugin, getStoryblokApi } from '@storyblok/react';
 import styles from './styles/global.css?url';
 import { GlobalLayout } from './components/layout';
@@ -145,12 +145,50 @@ export const loader = async () => {
   });
 };
 
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title:
+        'SheltonMindel - Architecture, Interior, Furniture and Product Design',
+    },
+    {
+      name: 'description',
+      content:
+        'Award-winning architectural firm providing complete architectural, interior, furniture, and product design services for corporate, cultural, academic, and residential projects in New York.',
+    },
+    { name: 'robots', content: 'index,follow' },
+    { charset: 'utf-8' },
+    { viewport: 'width=device-width,initial-scale=1' },
+    // Favicon
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/apple-touch-icon.png',
+    },
+    // Open Graph tags for social sharing
+    {
+      property: 'og:title',
+      content:
+        'SheltonMindel - Architecture, Interior, Furniture and Product Design',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Award-winning architectural firm providing complete architectural, interior, furniture, and product design services for corporate, cultural, academic, and residential projects in New York.',
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://sheltonmindel.com' },
+  ];
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
   if (!data) {
     // Handle the case where data is not available, e.g., render an error message or a loading spinner
     return <div>Loading or error...</div>;
   }
+
   const { env } = data;
   return (
     <html lang="en">
