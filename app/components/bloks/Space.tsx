@@ -10,6 +10,11 @@ export const Space = ({ blok }: { blok: SpaceStoryblok }) => {
   const { landscape_image, images } = blok;
   const { spaceName, prevSpace, nextSpace } = useLoaderData<typeof loader>();
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleImageClick = (index: number) => {
+    setActiveIndex(index);
+  };
+
   console.log('images', images);
   return (
     <article {...storyblokEditable(blok)} key={blok._uid} className="">
@@ -74,7 +79,7 @@ export const Space = ({ blok }: { blok: SpaceStoryblok }) => {
             <Dialog key={image._uid}>
               <DialogTrigger asChild>
                 <a
-                  onClick={() => setActiveIndex(index + 1)}
+                  onClick={() => handleImageClick(index)}
                   className="block aspect-square cursor-pointer"
                 >
                   <img
@@ -87,7 +92,7 @@ export const Space = ({ blok }: { blok: SpaceStoryblok }) => {
               <DialogContent className="!w-full h-full flex-col justify-center items-center border-none shadow-none">
                 <LightboxCarousel
                   images={images}
-                  startIndex={index + 1}
+                  startIndex={index}
                   location="space"
                 />
               </DialogContent>
