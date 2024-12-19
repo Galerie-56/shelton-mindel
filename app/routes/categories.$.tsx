@@ -62,7 +62,11 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       per_page: perPage,
       page,
       resolve_relations: resolveRelations,
-      search_term: uuid,
+      filter_query: {
+        category: {
+          in: uuid,
+        },
+      },
     },
     { cache: 'no-store' }
   );

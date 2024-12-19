@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getStoryblokApi } from '@storyblok/react';
 import { useMatches } from '@remix-run/react';
 import type { ProjectStoryblok } from '~/types';
@@ -20,7 +20,13 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
   const globalData = matches[0].data;
   const { total, projects: firstsProjects } = matches[1].data as RouteData;
 
-  const [projects, setProjects] = useState(firstsProjects);
+  const [projects, setProjects] = useState<ProjectStoryblok[]>([]);
+
+  // Reset projects when uuid changes
+  useEffect(() => {
+    setProjects(firstsProjects || []);
+    setCurrentPage(1);
+  }, [uuid, firstsProjects]);
 
   interface GlobalData {
     perPage: number;
@@ -28,18 +34,10 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
 
   const sbApi = getStoryblokApi();
   const resolveRelations = ['project.category'];
-
   const perPage = (globalData as GlobalData)?.perPage;
 
-  const fetchProjects = async (page: number, uuid: string) => {
-    // Fetch the UUID of the "on-the-board" category
-    const { data: categoryData } = await sbApi.get('cdn/stories', {
-      version: 'draft',
-      starts_with: 'categories/',
-      by_slugs: 'categories/on-the-board',
-    });
-
-    const onTheBoardUuid = categoryData.stories[0]?.uuid;
+  const fetchProjects = async (page: number, categoryUuid: string) => {
+    if (!categoryUuid) return;
 
     const { data: projects } = await sbApi.get(`cdn/stories`, {
       version: 'draft',
@@ -48,22 +46,18 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
       page,
       is_startpage: false,
       resolve_relations: resolveRelations,
-      search_term: uuid,
-      // filter_query: {
-      //   categories: {
-      //     not_in: onTheBoardUuid,
-      //   },
-      // },
+      filter_query: {
+        category: {
+          in: categoryUuid,
+        },
+      },
     });
 
     const nextProjects = projects.stories.map((p: ProjectStoryblok) =>
       getProjectCardData(p)
     );
 
-    setProjects((prevProjects: ProjectStoryblok[]) => [
-      ...prevProjects,
-      ...nextProjects,
-    ]);
+    setProjects((prevProjects) => [...prevProjects, ...nextProjects]);
   };
 
   const loadMore = () => {
@@ -71,6 +65,7 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
     setCurrentPage(nextPage);
     fetchProjects(nextPage, uuid || '');
   };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {projects?.map((project: ProjectStoryblok) => (
