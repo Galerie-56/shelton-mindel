@@ -71,12 +71,14 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {projects?.map((project: ProjectStoryblok) => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {projects?.map((project: ProjectStoryblok) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
       {total && projects.length < total && (
-        <div className="col-span-3 flex justify-center mt-4">
+        <div className="flex justify-center mt-4">
           <button className="button py-4 px-7" onClick={loadMore}>
             Load More
           </button>
