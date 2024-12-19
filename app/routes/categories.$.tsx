@@ -62,7 +62,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       per_page: perPage,
       page,
       resolve_relations: resolveRelations,
-      sort_by: 'content.project_code:asc',
+      sort_by: 'position:asc',
       filter_query: {
         category: {
           in: uuid,

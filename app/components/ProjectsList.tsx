@@ -44,7 +44,7 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
       page,
       is_startpage: false,
       resolve_relations: resolveRelations,
-      sort_by: 'content.project_code:asc',
+      sort_by: 'position:asc',
     };
 
     if (categoryUuid) {

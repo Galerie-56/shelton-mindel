@@ -62,7 +62,7 @@ export const loader: LoaderFunction = async ({
       page,
       is_startpage: false,
       resolve_relations: resolveRelations,
-      sort_by: 'content.project_code:asc',
+      sort_by: 'position:asc',
       // filter_query: {
       //   category: {
       //     not_in: onTheBoardUuid,
