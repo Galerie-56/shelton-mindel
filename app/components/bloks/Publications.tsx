@@ -16,7 +16,11 @@ export const Publications = ({ blok }: PublicationsStoryblok) => {
       </div>
       {book_cover && (
         <div>
-          <a href={purchase_link} target="_blank" rel="noopener noreferrer">
+          <a
+            href={purchase_link.cached_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={`${book_cover.filename}/m/352x0/`} alt={book_cover.alt} />
           </a>
           <div>
