@@ -62,6 +62,7 @@ export const loader: LoaderFunction = async ({
       page,
       is_startpage: false,
       resolve_relations: resolveRelations,
+      sort_by: 'content.project_code:asc',
       // filter_query: {
       //   category: {
       //     not_in: onTheBoardUuid,
@@ -71,7 +72,7 @@ export const loader: LoaderFunction = async ({
     { cache: 'no-store' }
   );
 
-  const total = await getTotal('projects');
+  const total = await getTotal(undefined, 'projects');
   const projects = projectsData.stories.map((p: ProjectStoryblok) =>
     getProjectCardData(p)
   );

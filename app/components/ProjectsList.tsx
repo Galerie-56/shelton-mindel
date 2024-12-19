@@ -22,7 +22,7 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
 
   const [projects, setProjects] = useState<ProjectStoryblok[]>([]);
 
-  // Reset projects when uuid changes
+  // Reset projects when uuid changes or when initial projects change
   useEffect(() => {
     setProjects(firstsProjects || []);
     setCurrentPage(1);
@@ -36,22 +36,26 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
   const resolveRelations = ['project.category'];
   const perPage = (globalData as GlobalData)?.perPage;
 
-  const fetchProjects = async (page: number, categoryUuid: string) => {
-    if (!categoryUuid) return;
-
-    const { data: projects } = await sbApi.get(`cdn/stories`, {
+  const fetchProjects = async (page: number, categoryUuid?: string) => {
+    const params: any = {
       version: 'draft',
       starts_with: 'projects/',
       per_page: perPage,
       page,
       is_startpage: false,
       resolve_relations: resolveRelations,
-      filter_query: {
+      sort_by: 'content.project_code:asc',
+    };
+
+    if (categoryUuid) {
+      params.filter_query = {
         category: {
           in: categoryUuid,
         },
-      },
-    });
+      };
+    }
+
+    const { data: projects } = await sbApi.get(`cdn/stories`, params);
 
     const nextProjects = projects.stories.map((p: ProjectStoryblok) =>
       getProjectCardData(p)
@@ -63,7 +67,7 @@ export const ProjectsList = ({ uuid }: ProjectsListType) => {
   const loadMore = () => {
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
-    fetchProjects(nextPage, uuid || '');
+    fetchProjects(nextPage, uuid);
   };
 
   return (
