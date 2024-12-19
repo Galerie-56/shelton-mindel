@@ -14,7 +14,7 @@ export const Publications = ({ blok }: PublicationsStoryblok) => {
           <StoryblokComponent key={nestedBlok._uid} blok={nestedBlok} />
         ))}
       </div>
-      {book_cover && (
+      {book_cover.filename && (
         <div>
           <a
             href={purchase_link.cached_url}
